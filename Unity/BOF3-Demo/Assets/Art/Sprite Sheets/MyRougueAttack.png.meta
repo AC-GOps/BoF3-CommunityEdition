@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 82a6b26fc3042634f99e9dcfbd5a1f36
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MyRougueAttack_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db333744a56038741aa57648ff409c6e
+      internalID: 2029197169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_1
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c99431da28bba334284c22f2f7e34157
+      internalID: -1471191941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_2
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00ef10b3371959c428bf22c54cecf363
+      internalID: 288462485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_3
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 041046e031c6c344c8c12d9288c005b6
+      internalID: 1999570935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_4
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b45f29e4c8254ae42aa94e05ab806dbd
+      internalID: 192098363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_5
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dbb4e824985d8f4db04f13b7105b38d
+      internalID: -1521479071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_6
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c01bd65c2c133274f9672fc3378791ae
+      internalID: 1570189174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_7
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d9e31f1d16c544598e821c8f19ee10
+      internalID: 408312898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_8
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c27c6c8ad84c6704b8e7da92da387a24
+      internalID: -1983790125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_9
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcbd80c53a1a574690c76259f5d63ca
+      internalID: -1286351457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_10
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a74efc598ee4d9c4cb1970c68b0befab
+      internalID: 152027502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_11
+      rect:
+        serializedVersion: 2
+        x: 1266
+        y: 72.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab968a5690046094485f45a02b227c50
+      internalID: 669650893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6114ffc3015f3d42b45a97face52f58
+      internalID: -431456582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_13
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9545af3628a994c4a95da46db417ffa8
+      internalID: -1195927034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_14
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132ab595e95195043989b105de688f5d
+      internalID: -1886332183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_15
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd522fceaeee37140bc88590388a6556
+      internalID: 1486903128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_16
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70b2f4bb9707e414388fcd77d0fdeddd
+      internalID: 412162536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_17
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dacede2ba789efa4389f824154ce4b27
+      internalID: -321585215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_18
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e372ab04d28f9844a892d98065662d26
+      internalID: 507407639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_19
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17ffa2ed2f463af4ebfaf9aa1e748035
+      internalID: -1669119240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_20
+      rect:
+        serializedVersion: 2
+        x: 921
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b1979f23d6434b489ebdaf889a10aef
+      internalID: -1939972411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MyRougueAttack_21
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 1.5
+        width: 114
+        height: 70.5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22cb9feef4cdca94a9094f044395555f
+      internalID: 990407131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0f34a192f1321ac429ef37a8ea433c21
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MyRougueAttack_0: 2029197169
+      MyRougueAttack_1: -1471191941
+      MyRougueAttack_10: 152027502
+      MyRougueAttack_11: 669650893
+      MyRougueAttack_12: -431456582
+      MyRougueAttack_13: -1195927034
+      MyRougueAttack_14: -1886332183
+      MyRougueAttack_15: 1486903128
+      MyRougueAttack_16: 412162536
+      MyRougueAttack_17: -321585215
+      MyRougueAttack_18: 507407639
+      MyRougueAttack_19: -1669119240
+      MyRougueAttack_2: 288462485
+      MyRougueAttack_20: -1939972411
+      MyRougueAttack_21: 990407131
+      MyRougueAttack_3: 1999570935
+      MyRougueAttack_4: 192098363
+      MyRougueAttack_5: -1521479071
+      MyRougueAttack_6: 1570189174
+      MyRougueAttack_7: 408312898
+      MyRougueAttack_8: -1983790125
+      MyRougueAttack_9: -1286351457
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
