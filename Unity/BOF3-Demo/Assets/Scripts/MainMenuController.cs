@@ -13,10 +13,21 @@ public class MainMenuController : MonoBehaviour
         SceneManager.LoadScene("DemoScene");
     }
 
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        
+    }
+
     private void Update()
     {
         if(Input.anyKeyDown)
         {
+            if(Input.GetMouseButtonDown(0))
+            {
+                return;
+            }
           StartCoroutine(StartGame());
         }
     }

@@ -58,31 +58,34 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.1f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\UIToEnemy.cs" />
-    <Compile Include="Assets\Scripts\BattleUI.cs" />
+    <Compile Include="Assets\Scripts\QuitGame.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\BattleUI.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\TurnBasedBattleEngine.cs" />
     <Compile Include="Assets\Scripts\MainMenuController.cs" />
-    <Compile Include="Assets\QuitGame.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\BattleCharacter.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacterManager.cs" />
     <Compile Include="Assets\Scripts\EnemyAnimationContolller.cs" />
     <Compile Include="Assets\Scripts\InteractionManager.cs" />
+    <Compile Include="Assets\Scripts\UI\EnemyHealthBarUI.cs" />
     <Compile Include="Assets\Scripts\Narrator.cs" />
     <Compile Include="Assets\Scripts\TextSpawner.cs" />
-    <Compile Include="Assets\fontChecker.cs" />
+    <Compile Include="Assets\Scripts\fontChecker.cs" />
     <Compile Include="Assets\Scripts\InteractableObject.cs" />
     <Compile Include="Assets\Scripts\FadeIN.cs" />
-    <Compile Include="Assets\Scripts\EnemyHealthBarUI.cs" />
-    <Compile Include="Assets\Scripts\BattleCharacter.cs" />
-    <Compile Include="Assets\Scripts\UIHelper.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\EnemyBattleCharcter.cs" />
     <Compile Include="Assets\Scripts\FlashText.cs" />
-    <Compile Include="Assets\Scripts\PlayerHealthBarUI.cs" />
     <Compile Include="Assets\Fonts\FontAutoSetter.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\PlayerBattleCharacter.cs" />
+    <Compile Include="Assets\Scripts\UI\UIHelper.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\UI\PlayerHealthBarUI.cs" />
     <Compile Include="Assets\Scripts\IsometricCharacterController.cs" />
     <Compile Include="Assets\Scripts\DialogueScriptable.cs" />
+    <Compile Include="Assets\Scripts\UI\UIToEnemy.cs" />
+    <Compile Include="Assets\Scripts\UI\KillTheMouse.cs" />
     <Compile Include="Assets\Scripts\SelectedSpriteFlash.cs" />
     <Compile Include="Assets\Scripts\SimpleSpriteSheetAnimator.cs" />
-    <Compile Include="Assets\Scripts\TurnBasedBattleEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
