@@ -25,6 +25,9 @@ public class AudioManager : MonoBehaviour
     [Range(0, 1)]
     public float sfxVolume = 1f;   // Volume for sound effects
 
+
+    private int currentClipIndex;
+
     private void Awake()
     {
         // Create a singleton instance
@@ -50,11 +53,12 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(int clipIndex)
     {
         backgroundMusic.DOFade(0, 1f).OnComplete(FadeMusicIn);
-        backgroundMusic.clip = musicClips[clipIndex];
+        currentClipIndex = clipIndex;
 
     }
     private void FadeMusicIn()
     {
+        backgroundMusic.clip = musicClips[currentClipIndex];
         backgroundMusic.Play();
         backgroundMusic.DOFade(1, 1f);
     }

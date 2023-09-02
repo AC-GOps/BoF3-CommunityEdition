@@ -10,17 +10,17 @@ public class PlayerCharacterManager : MonoBehaviour
     public BattleCharacter battleCharacter;
     public InteractionManager interactionManager;
 
-    public List<BattleCharacter> enemyBattleCharacters = new List<BattleCharacter>();
-    public List<BattleCharacter> playerBattleCharacters = new List<BattleCharacter>();
+    public List<EnemyBattleCharacter> enemyBattleCharacters = new List<EnemyBattleCharacter>();
+    public List<PlayerBattleCharacter> playerBattleCharacters = new List<PlayerBattleCharacter>();
 
     private void Awake()
     {
         instance = this;
     }
 
-    public void UpdatePlayerInfo(List<BattleCharacter> battleCharacters)
+    public void UpdatePlayerInfo(List<PlayerBattleCharacter> battleCharacters)
     {
         playerBattleCharacters.Clear();
-        playerBattleCharacters = new List<BattleCharacter>( battleCharacters );
+        playerBattleCharacters = new List<PlayerBattleCharacter>( battleCharacters );
     }
 }
