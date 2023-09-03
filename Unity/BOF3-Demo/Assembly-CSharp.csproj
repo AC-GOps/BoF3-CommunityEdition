@@ -59,12 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\QuitGame.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\Ability.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\BattleUI.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\TurnBasedBattleEngine.cs" />
     <Compile Include="Assets\Scripts\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\BattleCharacter.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\PlayerCharacterManager.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\AbilityMenu.cs" />
     <Compile Include="Assets\Scripts\EnemyAnimationContolller.cs" />
     <Compile Include="Assets\Scripts\InteractionManager.cs" />
     <Compile Include="Assets\Scripts\UI\EnemyHealthBarUI.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="Assets\Scripts\TextSpawner.cs" />
     <Compile Include="Assets\Scripts\fontChecker.cs" />
     <Compile Include="Assets\Scripts\InteractableObject.cs" />
+    <Compile Include="Assets\AbilityManager.cs" />
     <Compile Include="Assets\Scripts\FadeIN.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\EnemyBattleCharcter.cs" />
     <Compile Include="Assets\Scripts\FlashText.cs" />
@@ -86,6 +89,7 @@
     <Compile Include="Assets\Scripts\UI\KillTheMouse.cs" />
     <Compile Include="Assets\Scripts\SelectedSpriteFlash.cs" />
     <Compile Include="Assets\Scripts\SimpleSpriteSheetAnimator.cs" />
+    <Compile Include="Assets\AbilityUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -104,10 +108,12 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>

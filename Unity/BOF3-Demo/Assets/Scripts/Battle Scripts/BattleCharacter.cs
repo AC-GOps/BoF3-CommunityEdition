@@ -12,21 +12,10 @@ public enum BattleActionType
     Default
 }
 
-public enum AbilityType
-{
-    Fire,
-    Ice,
-    Electric,
-    Earth,
-    Wind,
-    Psyonic,
-    Status,
-    Death
-}
-
+[System.Serializable]
 public class BattleResitances
 {
-    public AbilityType abilityType;
+    public AbilityElement abilityType;
     public int Level;
 }
 
@@ -39,7 +28,7 @@ public class BattleCharacter : MonoBehaviour
     public string nameCharacter;
     public int HP, maxHP;
     public int Defence, baseDefence;
-    public int AP;
+    public int AP, maxAP;
     public int Agility;
     public int Level;
     public int Dodge;
@@ -48,11 +37,14 @@ public class BattleCharacter : MonoBehaviour
     public int Power;
     public int PsionicStatChance;
     public int Reprisal;
-    public List<BattleResitances> Resistances; // Res against -100% - 300% Flame, Frost, Electric, Earth & Wind / Psionic, Status, Death -200% - 200%
+    public List<BattleResitances> Resistances = new List<BattleResitances>(); // Res against -100% - 300% Flame, Frost, Electric, Earth & Wind / Psionic, Status, Death -200% - 200%
     public int Wisdom;
 
     public List<AudioClip> attackSounds;
     public List<AudioClip> hurtSounds;
+
+    public List<Ability> battleAbilities;
+    public Ability activeAbility;
 
     public Image healthbar;
     public Image healthbarRed;
@@ -62,13 +54,23 @@ public class BattleCharacter : MonoBehaviour
 
 
 
-    public void CalculateRes(AbilityType type, int damage)
+    public void CalculateRes(AbilityElement type, int damage)
     {
-        var res = Resistances.Find(i => i.abilityType == type);
+        BattleResitances res = new BattleResitances();
+
+        if(Resistances.Count == 0)
+        {
+            print("No Res Found acting as level 2 = 100%");
+            res.Level = 2;
+        }
+
+        res = Resistances.Find(i => i.abilityType == type);
+
         if (res == null)
         {
-            // no resistance found, play as if level 2 = 100%
-            return;
+            print("No Res Found acting as level 2 = 100%");
+            res = new BattleResitances();
+            res.Level = 2;
         }
 
         switch (res.Level)
@@ -99,6 +101,8 @@ public class BattleCharacter : MonoBehaviour
             default:
                 break;
         }
+
+        TakeMagicDamage(damage);
     }
 
     private void Start()
@@ -119,23 +123,60 @@ public class BattleCharacter : MonoBehaviour
         Defence = baseDefence;
     }
 
-    private void DodgeAttack(int damage)
+    private void DodgeAttack(out int dam)
     {
+        dam = 0;
         var chance = Random.Range(0, 100);
         if (chance < Dodge)
         {
             print(nameCharacter + " dodged attack");
             animator.SetTrigger("Dodge");
-            damage = 0;
+            dam = -1;
             StartCoroutine(DelayedBattleEngineUpdate(2));
             NumberBouncer.Instance.PlayTextBounceAtTarget(transform, "Miss");
         }
+    }
 
-        TakeDamage(damage);
+    private void TakeMagicDamage(int damage)
+    {
+        int actualDamage = damage - Wisdom;
+
+        if (actualDamage < 0)
+        {
+            actualDamage = 0;
+            print(nameCharacter + " took no damage");
+            StartCoroutine(DelayedBattleEngineUpdate(1));
+            NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
+            return;
+        }
+
+        PlayHurtSFX();
+
+        HP -= actualDamage;
+        print(nameCharacter + " took " + actualDamage + " damage");
+        UpdateStats();
+        animator.SetTrigger("Hurt");
+        NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
+
+        if (HP <= 0)
+        {
+            Die();
+        }
+
+        // Longer delay for hurt anim
+        StartCoroutine(DelayedBattleEngineUpdate(2));
     }
 
     private void TakeDamage(int damage)
     {
+        var dama =0;
+        DodgeAttack(out dama);
+
+        if(dama ==-1)
+        {
+            return;
+        }
+
         int actualDamage = damage - Defence;
 
         if (actualDamage < 0)
@@ -152,7 +193,7 @@ public class BattleCharacter : MonoBehaviour
 
         HP -= actualDamage;
         print(nameCharacter + " took " + actualDamage + " damage");
-        UpdateHealth();
+        UpdateStats();
         animator.SetTrigger("Hurt");
         TurnBasedBattleEngine.Instance.PlayHitAnimation();
         NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
@@ -171,12 +212,11 @@ public class BattleCharacter : MonoBehaviour
         isDead = true;
         animator.SetBool("Die", true);
         print(nameCharacter + " died");
-
     }
 
-    public virtual void UpdateHealth(bool noFade = false)
+    public virtual void UpdateStats(bool noFade = false)
     {
-        // called individually
+        // called individually in child classes
     }
 
     public void AttemptAction()
@@ -198,7 +238,7 @@ public class BattleCharacter : MonoBehaviour
                 break;
             case BattleActionType.Ability:
                 animator.SetTrigger("Ability");
-                print(nameCharacter + " attempts to attack " + target.nameCharacter);
+                Ability();
                 break;
             default:
                 break;
@@ -207,9 +247,9 @@ public class BattleCharacter : MonoBehaviour
         takenAction = true;
     }
 
-    public void TurnStartReset()
+    public virtual void TurnStartReset()
     {
-        animator.SetBool("TargetSelected", false);
+
 
         if (battleActionType == BattleActionType.Defend)
         {
@@ -234,7 +274,6 @@ public class BattleCharacter : MonoBehaviour
         Defence += baseDefence / 2;
         battleActionType = BattleActionType.Defend;
         target = this;
-        animator.SetBool("Defending", true);
         StartCoroutine(DelayedBattleEngineUpdate(1f));
         takenAction = true;
     }
@@ -255,20 +294,31 @@ public class BattleCharacter : MonoBehaviour
 
     private void Ability()
     {
-        // do ability here
+        // play anim and sfx
+        print(nameCharacter + " cast " + activeAbility.abilityName + " at "+ target.nameCharacter);
+        animator.SetTrigger("Ability");
     }
 
     #endregion
 
     private void AttemptDamage(int damage)
     {
-        DodgeAttack(damage);
+        TakeDamage(damage);
     }  
 
+    // Called in animation event
     public void AttemptDamageCall()
     {
         animator.SetBool("TargetSelected", false);
         target.AttemptDamage(Power);
+    }
+
+    // Called in animation event
+    public void AttemptAbilityCall()
+    {
+        AbilityManager.instance.PlayEffect(target.transform);
+        var combinedStrength = activeAbility.strength + Wisdom;
+        target.CalculateRes(activeAbility.element, combinedStrength);
     }
 
     private IEnumerator DelayedBattleEngineUpdate(float waitTime)

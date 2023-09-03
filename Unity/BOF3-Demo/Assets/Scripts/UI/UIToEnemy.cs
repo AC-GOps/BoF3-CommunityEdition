@@ -21,16 +21,12 @@ public class UIToEnemy : MonoBehaviour
     public void SetEnemyInfo(BattleCharacter SelectedEnemy)
     {
         characterName.text = SelectedEnemy.nameCharacter;
-        UIHelper.HealthBarPercent(SelectedEnemy.HP, SelectedEnemy.maxHP);
+        healthBar.fillAmount = UIHelper.HealthBarPercent(SelectedEnemy.HP, SelectedEnemy.maxHP);
     }
 
     public void ChangePosition(Vector3 target)
     {
         m_transform.anchoredPosition = GetUIPosFromWorldPos(canvas, target);
-        if(healthBar == null)
-        {
-            return;
-        }
     }
 
     public Vector2 GetUIPosFromWorldPos(Canvas canvas, Vector3 worldPosition)

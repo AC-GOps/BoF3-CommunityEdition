@@ -7,9 +7,22 @@ public class PlayerBattleCharacter : BattleCharacter
 
     public PlayerHealthBarUI playerHealthBar;
 
-    public override void UpdateHealth(bool noFade = false)
+    public override void UpdateStats(bool noFade = false)
     {
         playerHealthBar.UpdateHealth(HP, maxHP, noFade);
         playerHealthBar.UpdateTexts(HP, AP, nameCharacter);
+        playerHealthBar.UpdateAP(AP, maxAP, noFade);
+    }
+
+    public override void TurnStartReset()
+    {
+        base.TurnStartReset();
+        animator.SetBool("TargetSelected", false);
+    }
+
+    public override void Defend()
+    {
+        base.Defend();
+        animator.SetBool("Defending", true);
     }
 }

@@ -62,6 +62,15 @@ public class TurnBasedBattleEngine : MonoBehaviour
             }
 
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (battleUI.state == BattleState.SelectAbility)
+            {
+                CheckAbilityCost();
+            }
+
+        }
     }
 
     public void Init()
@@ -197,10 +206,8 @@ public class TurnBasedBattleEngine : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(SFX.Confirm);
         activeCharacter.battleActionType = BattleActionType.Attack;
-        selectedCharacterCount = 0;
-        selectedTarget = enemyBattleCharacters[selectedCharacterCount];
         battleUI.UpdateNameSkillText(activeCharacter.battleActionType.ToString());
-        battleUI.ToggleSelectTargetMenu(true);
+        battleUI.TogglePlayerBattleMenu(false);
         MoveToSelectTarget();
 
     }
@@ -216,15 +223,39 @@ public class TurnBasedBattleEngine : MonoBehaviour
     public void onAbilityButton()
     {
         AudioManager.instance.PlaySFX(SFX.Confirm);
-
-        activeCharacter.battleActionType = BattleActionType.Ability;
-
-        // if player is target
-        selectedCharacterCount = 0;
-        //selectedTarget = playerBattleCharacters[selectedCharacterCount];
-
         // TODO Open Ability Menu
+        battleUI.TogglePlayerBattleMenu(false);
+        battleUI.ToggleAbilityMenu(true, activeCharacter.battleAbilities);
+        battleUI.ToggleBattleInfo(true);
+        StartCoroutine(DelayAction()); 
+    }
 
+    private IEnumerator DelayAction()
+    {
+        yield return new WaitForSeconds(0.5f);
+        battleUI.state = BattleState.SelectAbility;
+    }
+
+    private void CheckAbilityCost()
+    {
+        var ability = battleUI.abilityMenu.currentUISelected.ability;
+        if(activeCharacter.AP - ability.apCost < 0)
+        {
+            AudioManager.instance.PlaySFX(SFX.Error);
+            print("Cannot afford abiltiy");
+            return;
+        }
+        activeCharacter.AP -= ability.apCost;
+        activeCharacter.UpdateStats();
+        SetAbility();
+    }
+
+    public void SetAbility()
+    {
+        activeCharacter.battleActionType = BattleActionType.Ability;
+        activeCharacter.activeAbility = battleUI.abilityMenu.currentUISelected.ability;
+        battleUI.ToggleAbilityMenu(false);
+        MoveToSelectTarget();
     }
 
     private void MoveToNextCharacter()
@@ -296,7 +327,9 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     private void MoveToSelectTarget()
     {
-        battleUI.TogglePlayerBattleMenu(false);
+        selectedCharacterCount = 0;
+        selectedTarget = enemyBattleCharacters[selectedCharacterCount];
+        battleUI.ToggleSelectTargetMenu(true); 
         choosingTarget = true;
         battleUI.state = BattleState.SelectTarget;
         SetSelectedTarget();
@@ -318,11 +351,13 @@ public class TurnBasedBattleEngine : MonoBehaviour
         selectedTarget.GetComponentInChildren<SelectedSpriteFlash>().StopFlash();
         choosingTarget = false;
         activeCharacter.target = selectedTarget;
-        activeCharacter.animator.SetTrigger(activeCharacter.battleActionType.ToString() + "BattleStance");
+        //activeCharacter.animator.SetTrigger(activeCharacter.battleActionType.ToString() + "BattleStance");
+        activeCharacter.animator.SetTrigger("AttackBattleStance");
         activeCharacter.animator.SetBool("TargetSelected", true);
         battleUI.ToggleSelectTargetMenu(false);
         battleUI.TurnOnHiddenHealth();
         battleUI.ToggleNameSkill(false);
+        battleUI.ToggleBattleInfo(false);
         MoveToNextCharacter();
     }
 

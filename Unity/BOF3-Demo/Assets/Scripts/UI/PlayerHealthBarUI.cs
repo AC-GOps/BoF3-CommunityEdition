@@ -34,4 +34,16 @@ public class PlayerHealthBarUI : MonoBehaviour
         healthBarRed.DOFillAmount(percentage, 1f);
     }
 
+    public void UpdateAP(int AP, int maxAP, bool noFade = false)
+    {
+        float percentage = UIHelper.HealthBarPercent(AP, maxAP);
+        apBar.fillAmount = percentage;
+        if (noFade)
+        {
+            apBarRed.fillAmount = percentage;
+            return;
+        }
+        apBarRed.DOFillAmount(percentage, 1f);
+    }
+
 }

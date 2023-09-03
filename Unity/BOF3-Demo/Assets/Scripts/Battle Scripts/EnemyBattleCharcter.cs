@@ -13,13 +13,14 @@ public class EnemyBattleCharacter : BattleCharacter
         BattleUI.instance.PulseBattleInfo(nameCharacter + " defends...");
     }
 
-    public override void UpdateHealth(bool noFade = false)
+    public override void UpdateStats(bool noFade = false)
     {
         healthBarUI.UpdateHealth(ammount,HP, maxHP, noFade);
     }
 
     public override void Die()
     {
+        base.Die();
         _engine.SetupAfterEnemyDeath(this);
     }
 
