@@ -11,6 +11,8 @@ public class BattleUI : MonoBehaviour
 {
     public static BattleUI instance { get; private set; }
 
+    public AbilityMenu abilityMenu;
+    public GameObject selectAbilityMenu;
     public GameObject playerbattlemenu;
     public GameObject selectTargetMenu;
     public GameObject battleNameSKillPanel;
@@ -64,6 +66,7 @@ public class BattleUI : MonoBehaviour
         {
             if (input == Vector2.zero)
             {
+                abilityButton.GetComponent<Canvas>().overrideSorting = false;
                 eventSystem.SetSelectedGameObject(attackButton);
                 hasInput = false;
                 return;
@@ -120,7 +123,7 @@ public class BattleUI : MonoBehaviour
                 EHB.healthBarName.text = enemy.nameCharacter;
                 EnemyTypeAmount++;
             }
-            enemy.UpdateHealth(true);
+            enemy.UpdateStats(true);
         }
     }
 
@@ -141,9 +144,7 @@ public class BattleUI : MonoBehaviour
             var PHB = players[i].playerHealthBar;
             PHB.gameObject.SetActive(true);
             PHB.healthBarRed.gameObject.SetActive(true);
-            //player.healthbar = PHB.healthBar;
-            //player.healthbarRed = PHB.healthBarRed;
-            player.UpdateHealth(true);
+            player.UpdateStats(true);
         }
     }
 
@@ -203,6 +204,7 @@ public class BattleUI : MonoBehaviour
         currentHiddenHealth = null;
     }
 
+    #region BATTLE INFO
     public void ToggleBattleInfo(bool on)
     {
         battleInfoPanel.transform.DOScale(on ? 1 : 0, 0.5f);
@@ -235,7 +237,7 @@ public class BattleUI : MonoBehaviour
             ToggleBattleInfo(false);
         }
     }
-
+    #endregion
     private void RemoveOwnerFromList(EnemyBattleCharacter owner, EnemyHealthBarUI v)
     {
         v.owner.Remove(owner);
@@ -276,7 +278,13 @@ public class BattleUI : MonoBehaviour
     {
         battleNameSKillPanel.SetActive(active);
     }
-
+    public void ToggleAbilityMenu(bool active, List<Ability> abilites = null, AbilityType type = AbilityType.ATTACK)
+    {
+        selectAbilityMenu.SetActive(active);
+        if(!active)
+        { return; }
+        abilityMenu.PopulateAbilityList(abilites, type);
+    }
     public void UpdateNameSkillText(string text)
     {
         nameSkillText.text = text;

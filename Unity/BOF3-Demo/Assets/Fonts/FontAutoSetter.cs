@@ -31,7 +31,7 @@ public class FontAutoSetter : EditorWindow
 {
     private TMP_FontAsset fontAsset;
     private FontAssetInfo fontAssetInfoUpper = new FontAssetInfo();
-    private FontAssetInfo fontAssetInfoLower;
+    private FontAssetInfo fontAssetInfoLower = new FontAssetInfo();
 
     private int fontAssetIndex;
 
@@ -91,9 +91,9 @@ public class FontAutoSetter : EditorWindow
             SetCurrentGlyphInfo();
         }
 
-        if (GUILayout.Button("Apply Changes to All Glyphs"))
+        if (GUILayout.Button("Apply All Changes to All Glyphs"))
         {
-            Undo.RecordObject(fontAsset, "Modify All Glyph Metrics");
+            Undo.RecordObject(fontAsset, "Modify All Glyphs");
 
             SetUpperCase();
 
@@ -102,6 +102,35 @@ public class FontAutoSetter : EditorWindow
             EditorUtility.SetDirty(fontAsset);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
+        }
+
+        if (GUILayout.Button("Apply Metric Changes to All Glyphs"))
+        {
+            Undo.RecordObject(fontAsset, "Modify All Glyph Metrics");
+
+            ChangeMetrics();
+
+            EditorUtility.SetDirty(fontAsset);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+    }
+
+    private void ChangeMetrics()
+    {
+        for (fontAssetIndex = 0; fontAssetIndex < 25; fontAssetIndex++)
+        {
+            var glyph = fontAsset.glyphTable[fontAssetIndex];
+            glyph.metrics = new GlyphMetrics(fontAssetInfoUpper.GlyphWidth, fontAssetInfoUpper.GlyphHeight, fontAssetInfoUpper.newGlyphBX, fontAssetInfoUpper.newGlyphBY, fontAssetInfoUpper.newGlyphAD);
+        }
+
+        GlyphRect g = new GlyphRect(fontAssetInfoLower.GlyphX, fontAssetInfoLower.GlyphY, fontAssetInfoLower.GlyphWidth, fontAssetInfoLower.GlyphHeight);
+        int t = fontAssetIndex;
+
+        for (fontAssetIndex = t; fontAssetIndex < fontAsset.glyphTable.Count; fontAssetIndex++)
+        {
+            var glyph = fontAsset.glyphTable[fontAssetIndex];
+            glyph.metrics = new GlyphMetrics(fontAssetInfoLower.GlyphWidth, fontAssetInfoLower.GlyphHeight, fontAssetInfoLower.newGlyphBX, fontAssetInfoLower.newGlyphBY, fontAssetInfoLower.newGlyphAD);
         }
     }
 

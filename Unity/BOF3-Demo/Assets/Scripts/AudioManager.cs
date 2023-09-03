@@ -9,6 +9,7 @@ public enum SFX
     Select,
     Back,
     Confirm,
+    Error
 }
 
 public class AudioManager : MonoBehaviour

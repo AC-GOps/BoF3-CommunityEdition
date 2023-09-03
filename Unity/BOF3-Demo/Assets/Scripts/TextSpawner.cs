@@ -27,6 +27,7 @@ public class NumberBouncer : MonoBehaviour
 
     public void PlayNumberBounceAtTarget(Transform target, int finalnumber)
     {
+        numberText.text = "";
         numberTarget = target;
         numberbounce.ChangePosition(numberTarget.position);
         animator.SetTrigger("Bounce");
@@ -35,11 +36,11 @@ public class NumberBouncer : MonoBehaviour
     }
     public void PlayTextBounceAtTarget(Transform target, string text)
     {
+        numberText.text = "";
         numberTarget = target;
         numberbounce.ChangePosition(numberTarget.position);
         animator.SetTrigger("Bounce");
         numberText.text = text;
-
     }
 
     public void RandomiseNumbers()
