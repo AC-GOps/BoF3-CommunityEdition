@@ -11,5 +11,7 @@ public class Ability : ScriptableObject
     public int strength;
     public int apCost;
     public string abilityDes;
+    public float castTime;
+    public bool targetAll;
 
 }

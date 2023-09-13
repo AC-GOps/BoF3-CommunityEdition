@@ -29,6 +29,7 @@ public class AbilityMenu : MonoBehaviour
     public List<AbilityUI> abilityPrefabs;
     private int abilityCount;
     private int selectedCount;
+    public int selectedSavedCount;
     public List<Sprite> ElementImages;
     public RectTransform finger;
     public AbilityUI currentUISelected;
@@ -63,6 +64,7 @@ public class AbilityMenu : MonoBehaviour
         AudioManager.instance.PlaySFX(SFX.Select);
         hasInput = true;
         selectedCount += input.y > 0 ? -1 : 1;
+
         if(selectedCount < 0)
         {
             selectedCount = 0;
@@ -71,14 +73,20 @@ public class AbilityMenu : MonoBehaviour
         {
             selectedCount = Activeabilities.Count-1;
         }
+        selectedSavedCount = selectedCount;
         currentUISelected = Activeabilities[selectedCount];
         finger.localPosition = currentUISelected.transform.localPosition;
         BattleUI.instance.UpdateBattleInfo(currentUISelected.ability.abilityDes);   
     }
 
-    public void PopulateAbilityList(List<Ability> playerAbilites, AbilityType type)
+    public void PopulateAbilityList(List<Ability> playerAbilites, AbilityType type, bool sameCharacter = false)
     {
         abilityCount =0;
+
+        if(!sameCharacter)
+        {
+            selectedSavedCount = 0;
+        }
 
         foreach (AbilityUI prefab in abilityPrefabs)
         {
@@ -105,7 +113,8 @@ public class AbilityMenu : MonoBehaviour
                 Activeabilities.Add(prefab);         
             }
         }
-        currentUISelected = Activeabilities[0];
+        currentUISelected = Activeabilities[selectedSavedCount];
+        BattleUI.instance.UpdateBattleInfo(currentUISelected.ability.abilityDes);
     }
 
 

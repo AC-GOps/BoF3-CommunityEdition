@@ -30,6 +30,7 @@ public class BattleUI : MonoBehaviour
     public GameObject EnemyHealthBarsParent;
 
     public UIToEnemy uiToEnemy;
+    public List<UIToEnemy> uiToEnemys;
 
     public List<PlayerHealthBarUI> PlayerHealthBars = new List<PlayerHealthBarUI>();
     public GameObject currentHiddenHealth;
@@ -66,7 +67,6 @@ public class BattleUI : MonoBehaviour
         {
             if (input == Vector2.zero)
             {
-                abilityButton.GetComponent<Canvas>().overrideSorting = false;
                 eventSystem.SetSelectedGameObject(attackButton);
                 hasInput = false;
                 return;
@@ -148,7 +148,7 @@ public class BattleUI : MonoBehaviour
         }
     }
 
-    public void UpdateTargetedUI(EnemyBattleCharacter selectedTarget)
+    public void UpdateTargetedUI(BattleCharacter selectedTarget)
     {
         uiToEnemy.ChangePosition(selectedTarget.transform.position);
         uiToEnemy.SetEnemyInfo(selectedTarget);
@@ -156,6 +156,17 @@ public class BattleUI : MonoBehaviour
         var v = EnemyHealthBars.Find(i => i.healthBarName.text == selectedTarget.nameCharacter);
         var t = v.owner.IndexOf(selectedTarget);
         TurnOffHealthBar(t, v);
+    }
+
+    public void UpdateTargetedUIAll(BattleCharacter selectedTarget, int index, bool active)
+    {
+        uiToEnemys[index].gameObject.SetActive(active);
+        uiToEnemys[index].ChangePosition(selectedTarget.transform.position);
+        uiToEnemys[index].SetEnemyInfo(selectedTarget);
+        foreach(EnemyHealthBarUI heathbar in EnemyHealthBars)
+        {
+            heathbar.gameObject.SetActive(!active);
+        }
     }
 
     private void TurnOffHealthBar(int index, EnemyHealthBarUI enemyHealth)
@@ -200,6 +211,10 @@ public class BattleUI : MonoBehaviour
     public void TurnOnHiddenHealth()
     {
         //print("setting health active");
+        if(currentHiddenHealth == null)
+        {
+            return;
+        }
         currentHiddenHealth.SetActive(true);
         currentHiddenHealth = null;
     }
@@ -257,11 +272,16 @@ public class BattleUI : MonoBehaviour
     public void ToggleSelectTargetMenu(bool active)
     {
         selectTargetMenu.SetActive(active);
+        foreach(UIToEnemy ui in uiToEnemys)
+        {
+            ui.gameObject.SetActive(false);
+        }
+        uiToEnemy.gameObject.SetActive(active);
         if (!active)
         {
             return;
         }
-        eventSystem.SetSelectedGameObject(selectTargetMenu);
+        eventSystem.SetSelectedGameObject(uiToEnemy.gameObject);
     }
 
     public void TogglePlayerBattleMenu(bool active)
@@ -278,12 +298,12 @@ public class BattleUI : MonoBehaviour
     {
         battleNameSKillPanel.SetActive(active);
     }
-    public void ToggleAbilityMenu(bool active, List<Ability> abilites = null, AbilityType type = AbilityType.ATTACK)
+    public void ToggleAbilityMenu(bool active, List<Ability> abilites = null, AbilityType type = AbilityType.ATTACK, bool sameChar = false)
     {
         selectAbilityMenu.SetActive(active);
         if(!active)
         { return; }
-        abilityMenu.PopulateAbilityList(abilites, type);
+        abilityMenu.PopulateAbilityList(abilites, type, sameChar);
     }
     public void UpdateNameSkillText(string text)
     {

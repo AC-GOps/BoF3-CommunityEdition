@@ -1,6 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public enum Abilites
+{
+    Flare,
+    Cyclone,
+    Frost
+}
 
 public class AbilityManager : MonoBehaviour
 {
@@ -13,11 +21,12 @@ public class AbilityManager : MonoBehaviour
         instance = this;
     }
 
-    public void PlayEffect(Transform target)
+    public void PlayEffect(Transform target, string abilityName)
     {
+        Abilites ab = (Abilites)Enum.Parse(typeof(Abilites), abilityName);
         //Testing only
         target.position += offest;
-        abilityEffcts[0].transform.position = target.position;
-        abilityEffcts[0].GetComponent<ParticleSystem>().Play();
+        abilityEffcts[(int)ab].transform.position = target.position;
+        abilityEffcts[(int)ab].GetComponent<ParticleSystem>().Play();
     }
 }

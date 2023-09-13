@@ -23,7 +23,7 @@ public class BattleCharacter : MonoBehaviour
 {
     public TurnBasedBattleEngine _engine;
     public Animator animator;
-    public BattleCharacter target;
+    public List<BattleCharacter> targets;
     public BattleActionType battleActionType;
     public string nameCharacter;
     public int HP, maxHP;
@@ -57,12 +57,6 @@ public class BattleCharacter : MonoBehaviour
     public void CalculateRes(AbilityElement type, int damage)
     {
         BattleResitances res = new BattleResitances();
-
-        if(Resistances.Count == 0)
-        {
-            print("No Res Found acting as level 2 = 100%");
-            res.Level = 2;
-        }
 
         res = Resistances.Find(i => i.abilityType == type);
 
@@ -132,7 +126,6 @@ public class BattleCharacter : MonoBehaviour
             print(nameCharacter + " dodged attack");
             animator.SetTrigger("Dodge");
             dam = -1;
-            StartCoroutine(DelayedBattleEngineUpdate(2));
             NumberBouncer.Instance.PlayTextBounceAtTarget(transform, "Miss");
         }
     }
@@ -145,7 +138,6 @@ public class BattleCharacter : MonoBehaviour
         {
             actualDamage = 0;
             print(nameCharacter + " took no damage");
-            StartCoroutine(DelayedBattleEngineUpdate(1));
             NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
             return;
         }
@@ -162,9 +154,6 @@ public class BattleCharacter : MonoBehaviour
         {
             Die();
         }
-
-        // Longer delay for hurt anim
-        StartCoroutine(DelayedBattleEngineUpdate(2));
     }
 
     private void TakeDamage(int damage)
@@ -184,7 +173,6 @@ public class BattleCharacter : MonoBehaviour
             actualDamage = 0;
             print(nameCharacter + " took no damage");
             //animator.SetTrigger("No Damage");
-            StartCoroutine(DelayedBattleEngineUpdate(1));
             NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
             return;
         }
@@ -202,9 +190,6 @@ public class BattleCharacter : MonoBehaviour
         {
             Die();
         }
-
-        // Longer delay for hurt anim
-        StartCoroutine(DelayedBattleEngineUpdate(2));
     }
 
     public virtual void Die()
@@ -235,6 +220,7 @@ public class BattleCharacter : MonoBehaviour
                 break;
             case BattleActionType.Defend:
                 Defend();
+                StartCoroutine(DelayedBattleEngineUpdate(2f));
                 break;
             case BattleActionType.Ability:
                 animator.SetTrigger("Ability");
@@ -249,14 +235,15 @@ public class BattleCharacter : MonoBehaviour
 
     public virtual void TurnStartReset()
     {
-
-
         if (battleActionType == BattleActionType.Defend)
         {
             StopDefend();
         }
+        if(targets!=null)
+        {
+            targets.Clear();
+        }
 
-        target = null;
         battleActionType = BattleActionType.Default;
         takenAction = false;
 
@@ -270,11 +257,10 @@ public class BattleCharacter : MonoBehaviour
         {
             return;
         }
-
+        print(nameCharacter + " is defending");
         Defence += baseDefence / 2;
         battleActionType = BattleActionType.Defend;
-        target = this;
-        StartCoroutine(DelayedBattleEngineUpdate(1f));
+        targets.Add(this);
         takenAction = true;
     }
 
@@ -289,13 +275,16 @@ public class BattleCharacter : MonoBehaviour
     {
         PlayAttackSFX();
         animator.SetTrigger("Attack");
-        print(nameCharacter + " attacks " + target.nameCharacter);
+        print(nameCharacter + " attacks " + targets[0].nameCharacter);
     }
 
     private void Ability()
     {
         // play anim and sfx
-        print(nameCharacter + " cast " + activeAbility.abilityName + " at "+ target.nameCharacter);
+        foreach( var target in targets)
+        {
+            print(nameCharacter + " cast " + activeAbility.abilityName + " at " + target.name);
+        }
         animator.SetTrigger("Ability");
     }
 
@@ -310,15 +299,34 @@ public class BattleCharacter : MonoBehaviour
     public void AttemptDamageCall()
     {
         animator.SetBool("TargetSelected", false);
-        target.AttemptDamage(Power);
+        targets[0].AttemptDamage(Power);
+        StartCoroutine(DelayedBattleEngineUpdate(2));
     }
 
     // Called in animation event
+    public void CastAbility()
+    {
+        AbilityManager.instance.PlayEffect(targets[0].transform, activeAbility.abilityName);
+        StartCoroutine( DelayAbilityCall(activeAbility.castTime));
+        AP -= activeAbility.apCost;
+        UpdateStats();
+    }
     public void AttemptAbilityCall()
     {
-        AbilityManager.instance.PlayEffect(target.transform);
+        animator.SetBool("TargetSelected", false);
         var combinedStrength = activeAbility.strength + Wisdom;
-        target.CalculateRes(activeAbility.element, combinedStrength);
+        for(int i =0; i< targets.Count; i++)
+        {
+            targets[i].CalculateRes(activeAbility.element, combinedStrength);
+        }
+        StartCoroutine(DelayedBattleEngineUpdate(2));
+    }
+
+    private IEnumerator DelayAbilityCall(float waitTime)
+    {
+        // wait for hurt anim
+        yield return new WaitForSeconds(waitTime);
+        AttemptAbilityCall();
     }
 
     private IEnumerator DelayedBattleEngineUpdate(float waitTime)
