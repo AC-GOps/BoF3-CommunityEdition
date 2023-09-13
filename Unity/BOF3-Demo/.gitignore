@@ -70,3 +70,5 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+*.meta
+Unity/BOF3-Demo/Library/ShaderCache/shader/TMP_SDF-Mobile SSDc8d1/00/a1ef2d9b785620b7a83c68cdac8bde84.bin
