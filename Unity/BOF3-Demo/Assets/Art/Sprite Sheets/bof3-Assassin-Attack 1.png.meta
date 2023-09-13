@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: 91ec44dfc8c52f146910d7fb9570dee5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 2
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec010489e59c835489744380887a61f1
+      internalID: 247482840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_1
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4df02e8215ae24cb5863016a97ff99
+      internalID: -684406718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_2
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1629b66fb054624438b6f796ab023dd0
+      internalID: 616059123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_3
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6974232b9867e95498683f979ba922a8
+      internalID: 677479427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_4
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d170b38d9d7d7a4091c9b921d9a0b4d
+      internalID: 1159030273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_5
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dda5030b60d17504fb141657323e78db
+      internalID: -822758849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_6
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 509bf2ddff981fc4cb3fdf9ba0bdb6f9
+      internalID: -561781800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_7
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c42f5608d1db704b9b017a80712183e
+      internalID: -1546849510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_8
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a35cf180f4ef534aa3af92114842110
+      internalID: -2098773111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_9
+      rect:
+        serializedVersion: 2
+        x: 1035
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a8edb7081a2444998b91a7e66eb8a3
+      internalID: 183441135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_10
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b926ccb6f9f4c3438d3b036f144f100
+      internalID: 138066509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_11
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154badd162d196c419fc960b1747aee3
+      internalID: -433336089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_12
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a839bfc172af74479501724f92db629
+      internalID: -2048307307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_13
+      rect:
+        serializedVersion: 2
+        x: 1495
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55b266c255960246afe4949cbd7eb24
+      internalID: 298392070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_14
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 081ebf9a925604b41ac540e66de2d0b9
+      internalID: 845627890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_15
+      rect:
+        serializedVersion: 2
+        x: 1725
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89ce0592d786a0d41bc837e4abf13157
+      internalID: 1025801674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_16
+      rect:
+        serializedVersion: 2
+        x: 1840
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcb3364602f358a46a57a79decbc5612
+      internalID: -136821981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_17
+      rect:
+        serializedVersion: 2
+        x: 1955
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6a4d3e5643879249a4ac808eb38cf4d
+      internalID: 1699703964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_18
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5408ccf64fb8205438e16d32e26f4816
+      internalID: 709838820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_19
+      rect:
+        serializedVersion: 2
+        x: 2185
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50da0a231c785948a53bf1714fdcbb3
+      internalID: 1869336037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_20
+      rect:
+        serializedVersion: 2
+        x: 2300
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a12074356e0b21c498303f6a15d1790d
+      internalID: 960699160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bof3-Assassin-Attack 1_21
+      rect:
+        serializedVersion: 2
+        x: 2415
+        y: 0
+        width: 115.045456
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003b9918b8de31d479e947a310c22f81
+      internalID: -71861191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 299dcf2ecabf46445aee623676f2cef6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      bof3-Assassin-Attack 1_0: 247482840
+      bof3-Assassin-Attack 1_1: -684406718
+      bof3-Assassin-Attack 1_10: 138066509
+      bof3-Assassin-Attack 1_11: -433336089
+      bof3-Assassin-Attack 1_12: -2048307307
+      bof3-Assassin-Attack 1_13: 298392070
+      bof3-Assassin-Attack 1_14: 845627890
+      bof3-Assassin-Attack 1_15: 1025801674
+      bof3-Assassin-Attack 1_16: -136821981
+      bof3-Assassin-Attack 1_17: 1699703964
+      bof3-Assassin-Attack 1_18: 709838820
+      bof3-Assassin-Attack 1_19: 1869336037
+      bof3-Assassin-Attack 1_2: 616059123
+      bof3-Assassin-Attack 1_20: 960699160
+      bof3-Assassin-Attack 1_21: -71861191
+      bof3-Assassin-Attack 1_3: 677479427
+      bof3-Assassin-Attack 1_4: 1159030273
+      bof3-Assassin-Attack 1_5: -822758849
+      bof3-Assassin-Attack 1_6: -561781800
+      bof3-Assassin-Attack 1_7: -1546849510
+      bof3-Assassin-Attack 1_8: -2098773111
+      bof3-Assassin-Attack 1_9: 183441135
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
