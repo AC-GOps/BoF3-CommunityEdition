@@ -7,6 +7,18 @@ public class EnemyBattleCharacter : BattleCharacter
     public EnemyHealthBarUI healthBarUI;
     public int ammount;
 
+    public override void Init()
+    {
+        base.Init();
+        SetupEnemyFirstTime();
+    }
+
+    public void SetupEnemyFirstTime()
+    {
+        HP = maxHP;
+        Defence = baseDefence;
+    }
+
     public override void Defend()
     {
         base.Defend();

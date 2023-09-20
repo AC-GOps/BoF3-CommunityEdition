@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public enum BattleState
 {
-    NotInBattle, SelectAction, SelectTarget, SelectAbility, SelectTargetAbility
+    NotInBattle, SelectAction, SelectTarget, SelectAbility, SelectTargetAbility, Battle
 }
 
 public class TurnBasedBattleEngine : MonoBehaviour
@@ -54,6 +54,11 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     private void GetInput()
     {
+        if(battleUI.state == BattleState.Battle)
+        {
+            return;
+        }
+
         //GO BACK
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -310,6 +315,8 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     private void MoveToNextCharacter()
     {
+        battleUI.TogglePlayerBattleMenu(false);
+        battleUI.ToggleNameSkill(false);
         activeCharacterCount++;
         selectedTargets.Clear();
 
@@ -335,8 +342,6 @@ public class TurnBasedBattleEngine : MonoBehaviour
             activeCharacterCount = 0;
         }
         activeCharacter = playerBattleCharacters[activeCharacterCount];
-        activeCharacter.targets = null;
-        activeCharacter.battleActionType = BattleActionType.Default;
         activeCharacter.TurnStartReset();
         StartCoroutine(PlayerTurn(battleSpeed));
     }
