@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Generated file, do not modify, your changes will be overwritten (use AssetPostprocessor.OnGeneratedCSProject) -->
   <PropertyGroup>
     <LangVersion>9.0</LangVersion>
   </PropertyGroup>
@@ -47,7 +48,7 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.18</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.21</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2022.3.1f1</UnityVersion>
@@ -58,71 +59,105 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.1f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\QuitGame.cs" />
-    <Compile Include="Assets\Scripts\Battle Scripts\Ability.cs" />
-    <Compile Include="Assets\Scripts\Battle Scripts\BattleUI.cs" />
-    <Compile Include="Assets\Scripts\Battle Scripts\TurnBasedBattleEngine.cs" />
-    <Compile Include="Assets\Scripts\MainMenuController.cs" />
-    <Compile Include="Assets\Scripts\Battle Scripts\BattleCharacter.cs" />
-    <Compile Include="Assets\Scripts\FollowTarget.cs" />
-    <Compile Include="Assets\Scripts\PlayerCharacterManager.cs" />
-    <Compile Include="Assets\Scripts\Battle Scripts\AbilityMenu.cs" />
-    <Compile Include="Assets\Scripts\EnemyAnimationContolller.cs" />
-    <Compile Include="Assets\Scripts\InteractionManager.cs" />
-    <Compile Include="Assets\Scripts\UI\EnemyHealthBarUI.cs" />
-    <Compile Include="Assets\Scripts\Narrator.cs" />
-    <Compile Include="Assets\Scripts\TextSpawner.cs" />
-    <Compile Include="Assets\Scripts\fontChecker.cs" />
-    <Compile Include="Assets\Spells Pack\Demo\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\InteractableObject.cs" />
     <Compile Include="Assets\AbilityManager.cs" />
+    <Compile Include="Assets\Scripts\QuitGame.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\Ability.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Display.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\BattleUI.cs" />
     <Compile Include="Assets\Scripts\FadeIN.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\TurnBasedBattleEngine.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Trigger.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_SpriteFader.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Player.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_VectorPicker.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\WindManagerSSU.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\InteractiveWindSSU.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\EnemyBattleCharcter.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\SpriteSheetSSU.cs" />
+    <Compile Include="Assets\Scripts\MainMenuController.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\MaterialInstancerSSU.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\BattleCharacter.cs" />
     <Compile Include="Assets\Scripts\FlashText.cs" />
     <Compile Include="Assets\Fonts\FontAutoSetter.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\PlayerBattleCharacter.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_GUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIHelper.cs" />
+    <Compile Include="Assets\Scripts\FollowTarget.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\PlayerCharacterManager.cs" />
+    <Compile Include="Assets\Scripts\Battle Scripts\AbilityMenu.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Camera.cs" />
     <Compile Include="Assets\Spells Pack\Demo\Scripts\Demo.cs" />
+    <Compile Include="Assets\Scripts\EnemyAnimationContolller.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_ColorPicker.cs" />
     <Compile Include="Assets\Spells Pack\Demo\Scripts\CreateProjectile.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerHealthBarUI.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\UnscaledTimeSSU.cs" />
     <Compile Include="Assets\Scripts\IsometricCharacterController.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\ImageSSU.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_VectorFollow.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Shaders.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_DisplayTitle.cs" />
     <Compile Include="Assets\Scripts\DialogueScriptable.cs" />
+    <Compile Include="Assets\Scripts\InteractionManager.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\InteractiveSquishSSU.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Internal\InstancerSSU.cs" />
     <Compile Include="Assets\Scripts\UI\UIToEnemy.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\ShaderFaderSSU.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\WindParallaxSSU.cs" />
+    <Compile Include="Assets\Scripts\UI\EnemyHealthBarUI.cs" />
+    <Compile Include="Assets\Scripts\Narrator.cs" />
+    <Compile Include="Assets\Scripts\TextSpawner.cs" />
     <Compile Include="Assets\Scripts\UI\KillTheMouse.cs" />
     <Compile Include="Assets\Scripts\SelectedSpriteFlash.cs" />
+    <Compile Include="Assets\Scripts\fontChecker.cs" />
     <Compile Include="Assets\Scripts\SimpleSpriteSheetAnimator.cs" />
     <Compile Include="Assets\AbilityUI.cs" />
+    <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_FloatPicker.cs" />
+    <Compile Include="Assets\Spells Pack\Demo\Scripts\Projectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\3D Lit URP SSU.shader" />
     <None Include="Assets\Spells Pack\Demo\Environment\Shaders\Rock.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
     <None Include="Assets\Spells Pack\Demo\Environment\Shaders\Vegetation.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\3D Lit BuiltIn SSU.shader" />
     <None Include="Assets\Spells Pack\Demo\Environment\Shaders\GroundCover.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\Multiplicative SSU.shader" />
     <None Include="Assets\Spells Pack\Demo\Environment\Shaders\Terrain.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\Standard SSU.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\Additive SSU.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Color Pick.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\2D Lit URP SSU.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\Spells Pack\Documentation\Documentation.txt" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\GUI SSU.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\3D Lit Cutout BuiltIn SSU.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\ASE\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\Additive GUI SSU.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Sprite Shaders Ultimate\Shaders\3D Lit Cutout URP SSU.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -374,14 +409,8 @@
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.1f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="ReportGeneratorMerged">
-      <HintPath>Library\PackageCache\com.unity.testtools.codecoverage@1.2.3\lib\ReportGenerator\ReportGeneratorMerged.dll</HintPath>
-    </Reference>
     <Reference Include="DOTween">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>Library\PackageCache\com.unity.visualscripting@1.8.0\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.1f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -752,20 +781,14 @@
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.EditorCoroutines.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.EditorCoroutines.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
@@ -773,35 +796,32 @@
     <Reference Include="Unity.Burst">
       <HintPath>Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Shared.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Base">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Core">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Core.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
@@ -812,74 +832,14 @@
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Timeline">
-      <HintPath>Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Performance.Profile-Analyzer.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Performance.Profile-Analyzer.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Model">
-      <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Model.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder">
-      <HintPath>Library\ScriptAssemblies\Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.State">
-      <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

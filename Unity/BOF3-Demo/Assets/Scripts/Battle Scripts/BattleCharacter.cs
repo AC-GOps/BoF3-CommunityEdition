@@ -21,9 +21,12 @@ public class BattleResitances
 
 public class BattleCharacter : MonoBehaviour
 {
-    public TurnBasedBattleEngine _engine;
+    protected TurnBasedBattleEngine _engine;
+    [HideInInspector]
     public Animator animator;
+    [HideInInspector]
     public List<BattleCharacter> targets;
+    [HideInInspector]
     public BattleActionType battleActionType;
     public string nameCharacter;
     public int HP, maxHP;
@@ -35,10 +38,11 @@ public class BattleCharacter : MonoBehaviour
     public int Drop;
     public int DeathStat;
     public int Power;
+    public int Wisdom;
     public int PsionicStatChance;
     public int Reprisal;
     public List<BattleResitances> Resistances = new List<BattleResitances>(); // Res against -100% - 300% Flame, Frost, Electric, Earth & Wind / Psionic, Status, Death -200% - 200%
-    public int Wisdom;
+
 
     public List<AudioClip> attackSounds;
     public List<AudioClip> hurtSounds;
@@ -46,11 +50,8 @@ public class BattleCharacter : MonoBehaviour
     public List<Ability> battleAbilities;
     public Ability activeAbility;
 
-    public Image healthbar;
-    public Image healthbarRed;
-
-    public bool isDead;
-    public bool takenAction;
+    public bool isDead { get; set; }
+    public bool takenAction { get; set; }
 
 
 
@@ -102,19 +103,12 @@ public class BattleCharacter : MonoBehaviour
     private void Start()
     {
         Init();
-        SetupEnemyFirstTime();
     }
 
-    public void Init()
+    public virtual void Init()
     {
         animator = GetComponentInChildren<Animator>();
         _engine = TurnBasedBattleEngine.Instance;
-    }
-
-    public void SetupEnemyFirstTime()
-    {
-        HP = maxHP;
-        Defence = baseDefence;
     }
 
     private void DodgeAttack(out int dam)
@@ -268,7 +262,7 @@ public class BattleCharacter : MonoBehaviour
     {
         animator.SetBool("Defending", false);
         print(nameCharacter + " has stopped defending");
-        Defence -= baseDefence / 2;
+        Defence = baseDefence;
     }
     
     private void Attack()

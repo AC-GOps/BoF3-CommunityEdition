@@ -25,5 +25,4 @@ public class FadeImage : MonoBehaviour
         image = GetComponent<Image>();
         image.DOFade(EndValue, Time).SetEase(Ease.InCubic);
     }
-
 }
