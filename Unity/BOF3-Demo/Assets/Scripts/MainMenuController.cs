@@ -8,9 +8,9 @@ public class MainMenuController : MonoBehaviour
     public FadeImage fade;
     public IEnumerator StartGame()
     {
-        fade.Play();
+        fade.FadeIn();
         yield return new WaitForSeconds(fade.Time);
-        SceneManager.LoadScene("DemoScene");
+        SceneChanger.LoadSceneByname("DemoScene");
     }
 
     private void Start()

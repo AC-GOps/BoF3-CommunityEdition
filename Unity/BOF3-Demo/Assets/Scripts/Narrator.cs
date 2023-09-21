@@ -153,6 +153,8 @@ public class Narrator : MonoBehaviour
         controller.canMove = true;
         interactionManager.canInteract = true;
 
+        interactionManager.interactableObject.onUsed.Invoke();
+
         if (interactionManager.interactableObject.battleTriggerTest)
         {
             interactionManager.canInteract = false;

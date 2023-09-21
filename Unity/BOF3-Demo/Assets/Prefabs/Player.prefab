@@ -253,12 +253,19 @@ MonoBehaviour:
   _speedRun: 600
   _speedWalk: 300
   _turnSpeed: 360
+  _input: {x: 0, y: 0, z: 0}
   _animator: {fileID: 8360774794922446300}
   _renderer: {fileID: 2334936247529671378}
   isSprint: 0
   sprinting: 0
   autoSprint: 0
   canMove: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistance: 1
+  offset: {x: 0, y: 0, z: 0}
+  stickToGround: 0
 --- !u!114 &6273298158712414057
 MonoBehaviour:
   m_ObjectHideFlags: 0
