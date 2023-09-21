@@ -14,15 +14,20 @@ public class FadeImage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(auto)
+        image = GetComponent<Image>();
+        if (auto)
         {
-            Play();
+            FadeIn();
         }
     }
 
-    public void Play()
+    public void FadeIn()
     {
-        image = GetComponent<Image>();
-        image.DOFade(EndValue, Time).SetEase(Ease.InCubic);
+        image.DOFade(0, Time).SetEase(Ease.InCubic);
+    }
+
+    public void FadeOut()
+    {
+        image.DOFade(1, Time).SetEase(Ease.InCubic);
     }
 }

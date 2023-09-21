@@ -9,7 +9,7 @@ public class IsometricCharacterController : MonoBehaviour
     [SerializeField] private float _speedRun = 10;
     [SerializeField] private float _speedWalk = 5;
     [SerializeField] private float _turnSpeed = 360;
-    private Vector3 _input;
+    public Vector3 _input;
     private Vector3 _inputLast;
     public Animator _animator;
 
@@ -21,16 +21,59 @@ public class IsometricCharacterController : MonoBehaviour
 
     public bool canMove;
 
+    public LayerMask groundLayer;
+    public float raycastDistance = 1.0f;
+    public Vector3 offset;
+
+    public bool stickToGround;
+
     private void Update()
     {
         GetMovementInput();
         SetSprite();
         SetSpeed();
+
     }
 
     private void FixedUpdate()
     {
         Move();
+        StopSlipping();
+        if(!stickToGround)
+        { return; }
+        StickToGround();
+    }
+
+    private void StopSlipping()
+    {
+        // Perform a raycast downward to check for the ground.
+
+        _rb.constraints = RigidbodyConstraints.FreezeRotation;
+        if (_input.magnitude == 0)
+        {
+            _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+            return;
+        }
+
+
+
+    }
+
+    private void StickToGround()
+    {
+        // Modify the Rigidbody's velocity to only affect the Y-axis (vertical movement).
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance, groundLayer))
+        {
+            Vector3 newPosition = hit.point + offset;// 0.1f is an offset to ensure the Rigidbody stays slightly above the ground.
+            _rb.MovePosition(newPosition);
+
+            // Modify the Rigidbody's velocity to only affect the Y-axis (vertical movement).
+            Vector3 newVelocity = _rb.velocity;
+            newVelocity.y = 0f; // Set the Y velocity to zero.
+            _rb.velocity = newVelocity;
+        }
+        
     }
 
     private void GetMovementInput()
