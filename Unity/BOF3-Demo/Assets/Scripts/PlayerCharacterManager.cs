@@ -23,4 +23,24 @@ public class PlayerCharacterManager : MonoBehaviour
         playerBattleCharacters.Clear();
         playerBattleCharacters = new List<PlayerBattleCharacter>( battleCharacters );
     }
+
+    public List<EnemyBattleCharacter> CreateNewEnemyList()
+    {
+        List<EnemyBattleCharacter> CreatedList = new List<EnemyBattleCharacter>();
+        List<EnemyBattleCharacter> TempList = new List<EnemyBattleCharacter>(enemyBattleCharacters);
+
+        int enemyamount = Random.Range( 3, 4 );
+        print("There are " + enemyamount + " enemies");
+
+        for (int i = 0; i < enemyamount; i++)
+        {
+            int enemyIndex = Random.Range(0, TempList.Count);
+            EnemyBattleCharacter enemy = TempList[enemyIndex];
+            TempList.Remove(enemy);
+            CreatedList.Add(enemy);
+            print("Enemy No." + i + " is " + enemy.nameCharacter);
+        }
+        return CreatedList;
+
+    }
 }

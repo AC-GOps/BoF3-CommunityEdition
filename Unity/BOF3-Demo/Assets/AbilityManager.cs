@@ -25,8 +25,8 @@ public class AbilityManager : MonoBehaviour
     {
         Abilites ab = (Abilites)Enum.Parse(typeof(Abilites), abilityName);
         //Testing only
-        target.position += offest;
-        abilityEffcts[(int)ab].transform.position = target.position;
+        Vector3 targetPos = target.position + offest;
+        abilityEffcts[(int)ab].transform.position = targetPos;
         abilityEffcts[(int)ab].GetComponent<ParticleSystem>().Play();
     }
 }

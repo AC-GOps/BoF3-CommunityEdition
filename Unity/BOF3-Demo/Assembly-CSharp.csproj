@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\InteractionManager.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\InteractiveSquishSSU.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Internal\InstancerSSU.cs" />
+    <Compile Include="Assets\Scripts\NPC Contoller.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\ShaderFaderSSU.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\WindParallaxSSU.cs" />
     <Compile Include="Assets\Scripts\UI\EnemyHealthBarUI.cs" />

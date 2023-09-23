@@ -42,6 +42,10 @@ public class BattleUI : MonoBehaviour
     private float timer;
     public float showInfoTime;
 
+    public FadeImage gameoverfade;
+    public GameObject playerGameOverPanel;
+    public GameObject ContinueButton;
+
     private void Awake()
     {
         instance = this;
@@ -63,17 +67,21 @@ public class BattleUI : MonoBehaviour
 
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
+        if (input == Vector2.zero)
+        {
+            hasInput = false;
+        }
+
+        if (hasInput)
+        {
+            return;
+        }
+
         if (state == BattleState.SelectAction)
         {
             if (input == Vector2.zero)
             {
                 eventSystem.SetSelectedGameObject(attackButton);
-                hasInput = false;
-                return;
-            }
-
-            if (hasInput)
-            {
                 return;
             }
 
@@ -86,6 +94,36 @@ public class BattleUI : MonoBehaviour
             }
             eventSystem.SetSelectedGameObject(input.y > 0 ? abilityButton : itemButton);
         }
+
+        if (state == BattleState.SelectTarget || state == BattleState.SelectTargetAbility)
+        {
+            if (input == Vector2.zero)
+            {
+                return;
+            }
+            TurnBasedBattleEngine engine = TurnBasedBattleEngine.Instance;
+            eventSystem.SetSelectedGameObject(uiToEnemy.gameObject);
+            hasInput = true;
+            if (input.x > 0)
+            {
+                engine.selectedCharacterCount++;
+                if (engine.selectedCharacterCount > engine.enemyBattleCharacters.Count - 1)
+                {
+                    engine.selectedCharacterCount = 0;
+                }
+            }
+            if (input.x < 0)
+            {
+                engine.selectedCharacterCount--;
+                if (engine.selectedCharacterCount < 0)
+                {
+                    engine.selectedCharacterCount = engine.enemyBattleCharacters.Count - 1;
+                }
+            }
+            engine.SetSelectedTarget();
+        }
+
+
     }
 
     public void InitEnemyHealthBars(List<EnemyBattleCharacter> enemies)
@@ -199,7 +237,7 @@ public class BattleUI : MonoBehaviour
         }
     }
 
-    public void UIOnDeath(EnemyBattleCharacter character)
+    public void EnemyUIOnDeath(EnemyBattleCharacter character)
     {
         var v = EnemyHealthBars.Find(i => i.healthBarName.text == character.nameCharacter);
         //print("Health bar name that just died is " + v.name);
@@ -316,6 +354,25 @@ public class BattleUI : MonoBehaviour
         playerbattleHUD.SetActive(false);
         playerWonPanel.SetActive(true);
         eventSystem.SetSelectedGameObject(wonButton);
+    }   
+    
+    public void EnableGameOver()
+    {
+        StartCoroutine(GameOver());
+    }
+
+    private IEnumerator GameOver()
+    {
+        playerbattlemenu.SetActive(false);
+        playerbattleHUD.SetActive(false);
+        foreach (Animator animators in TurnBasedBattleEngine.Instance.playerAnimators)
+        {
+            animators.GetComponent<SpriteRenderer>().sortingLayerName = "Forground";
+        }
+        gameoverfade.FadeOut();
+        yield return new WaitForSeconds(2f);
+        playerGameOverPanel.SetActive(true);
+        eventSystem.SetSelectedGameObject(ContinueButton);
     }
 
     public void ExitBattle()

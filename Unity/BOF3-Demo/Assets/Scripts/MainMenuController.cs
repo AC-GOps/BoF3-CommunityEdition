@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class MainMenuController : MonoBehaviour
 {
     public FadeImage fade;
+    public AudioSource BG;
     public IEnumerator StartGame()
     {
         fade.FadeIn();
+        BG.DOFade(0, 0.5f);
         yield return new WaitForSeconds(fade.Time);
         SceneChanger.LoadSceneByname("DemoScene");
     }

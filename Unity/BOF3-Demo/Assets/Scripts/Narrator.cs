@@ -138,6 +138,7 @@ public class Narrator : MonoBehaviour
 
     public void OpenTextBox()
     {
+        interactionManager.interactableObject.onOpen.Invoke();
         textBox.gameObject.SetActive(true);
         text.text = "";
         currentDialogue = -1;
@@ -153,7 +154,7 @@ public class Narrator : MonoBehaviour
         controller.canMove = true;
         interactionManager.canInteract = true;
 
-        interactionManager.interactableObject.onUsed.Invoke();
+        interactionManager.interactableObject.onClose.Invoke();
 
         if (interactionManager.interactableObject.battleTriggerTest)
         {

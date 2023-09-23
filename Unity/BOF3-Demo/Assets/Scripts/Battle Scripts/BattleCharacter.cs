@@ -128,7 +128,7 @@ public class BattleCharacter : MonoBehaviour
     {
         int actualDamage = damage - Wisdom;
 
-        if (actualDamage < 0)
+        if (actualDamage == 0)
         {
             actualDamage = 0;
             print(nameCharacter + " took no damage");
@@ -136,11 +136,18 @@ public class BattleCharacter : MonoBehaviour
             return;
         }
 
-        PlayHurtSFX();
-
         HP -= actualDamage;
-        print(nameCharacter + " took " + actualDamage + " damage");
         UpdateStats();
+
+        if (actualDamage < 0)
+        {
+            print(nameCharacter + " is healed by " + actualDamage + " damage");
+            NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
+            return;
+        }
+
+        PlayHurtSFX();
+        print(nameCharacter + " took " + actualDamage + " damage");
         animator.SetTrigger("Hurt");
         NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
 
@@ -195,6 +202,14 @@ public class BattleCharacter : MonoBehaviour
 
     public virtual void UpdateStats(bool noFade = false)
     {
+        if (HP > maxHP)
+        {
+            HP = maxHP;
+        }
+        if (HP < 0)
+        {
+            HP = 0;
+        }
         // called individually in child classes
     }
 
@@ -217,7 +232,6 @@ public class BattleCharacter : MonoBehaviour
                 StartCoroutine(DelayedBattleEngineUpdate(2f));
                 break;
             case BattleActionType.Ability:
-                animator.SetTrigger("Ability");
                 Ability();
                 break;
             default:
@@ -274,12 +288,12 @@ public class BattleCharacter : MonoBehaviour
 
     private void Ability()
     {
+        animator.SetTrigger("Ability");
         // play anim and sfx
-        foreach( var target in targets)
+        foreach ( var target in targets)
         {
             print(nameCharacter + " cast " + activeAbility.abilityName + " at " + target.name);
         }
-        animator.SetTrigger("Ability");
     }
 
     #endregion
@@ -305,6 +319,7 @@ public class BattleCharacter : MonoBehaviour
         AP -= activeAbility.apCost;
         UpdateStats();
     }
+
     public void AttemptAbilityCall()
     {
         animator.SetBool("TargetSelected", false);
