@@ -10,7 +10,8 @@ public class InteractableObject : MonoBehaviour
     public DialogueScript script;
     public DialogueScript scriptUsed;
     public bool used;
-    public UnityEvent onUsed; 
+    public UnityEvent onClose; 
+    public UnityEvent onOpen; 
 
     //public bool triggerAction;
     public bool battleTriggerTest;

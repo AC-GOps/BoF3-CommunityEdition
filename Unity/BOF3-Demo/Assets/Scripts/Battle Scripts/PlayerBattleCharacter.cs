@@ -9,6 +9,7 @@ public class PlayerBattleCharacter : BattleCharacter
 
     public override void UpdateStats(bool noFade = false)
     {
+        base.UpdateStats();
         playerHealthBar.UpdateHealth(HP, maxHP, noFade);
         playerHealthBar.UpdateTexts(HP, AP, nameCharacter);
         playerHealthBar.UpdateAP(AP, maxAP, noFade);
@@ -24,5 +25,11 @@ public class PlayerBattleCharacter : BattleCharacter
     {
         base.Defend();
         animator.SetBool("Defending", true);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        _engine.SetupAfterPlayerDeath(this);
     }
 }

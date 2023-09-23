@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2923884059935008955}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 62, y: 0.97089434, z: 65.86201}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4152669857705017861}
-  selectedAnimator: {fileID: 0}
 --- !u!1 &7821010349901046969
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,23 +169,25 @@ MonoBehaviour:
   animator: {fileID: 4152669857705017861}
   targets: []
   battleActionType: 0
-  nameCharacter: Dude
+  nameCharacter: Killer
   HP: 0
-  maxHP: 10
+  maxHP: 50
   Defence: 0
-  baseDefence: 40
+  baseDefence: 10
   AP: 0
   maxAP: 0
   Agility: 0
   Level: 0
-  Dodge: 0
+  Dodge: 30
   Drop: 0
   DeathStat: 0
-  Power: 5
+  Power: 10
   Wisdom: 0
   PsionicStatChance: 0
   Reprisal: 0
-  Resistances: []
+  Resistances:
+  - abilityType: 0
+    Level: 0
   attackSounds:
   - {fileID: 8300000, guid: c54d02bbd19ff7a4581e291680f6abc8, type: 3}
   hurtSounds:
