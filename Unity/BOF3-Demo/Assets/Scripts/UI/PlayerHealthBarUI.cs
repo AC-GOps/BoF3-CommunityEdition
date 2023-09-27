@@ -7,6 +7,7 @@ using DG.Tweening;
 
 public class PlayerHealthBarUI : MonoBehaviour
 {
+    public BattleCharacter owner;
     public Image healthBar;
     public Image healthBarRed;
     public Image apBar;
@@ -31,7 +32,7 @@ public class PlayerHealthBarUI : MonoBehaviour
             healthBarRed.fillAmount = percentage;
             return;
         }
-        healthBarRed.DOFillAmount(percentage, 1f);
+        healthBarRed.DOFillAmount(percentage, 1f).OnComplete(owner.Die);
     }
 
     public void UpdateAP(int AP, int maxAP, bool noFade = false)

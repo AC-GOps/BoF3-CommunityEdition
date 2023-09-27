@@ -7,7 +7,8 @@ public enum Abilites
 {
     Flare,
     Cyclone,
-    Frost
+    Frost,
+    Death
 }
 
 public class AbilityManager : MonoBehaviour

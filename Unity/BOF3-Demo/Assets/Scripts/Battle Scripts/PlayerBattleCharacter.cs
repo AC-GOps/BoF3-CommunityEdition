@@ -29,6 +29,10 @@ public class PlayerBattleCharacter : BattleCharacter
 
     public override void Die()
     {
+        if (HP > 0)
+        {
+            return;
+        }
         base.Die();
         _engine.SetupAfterPlayerDeath(this);
     }

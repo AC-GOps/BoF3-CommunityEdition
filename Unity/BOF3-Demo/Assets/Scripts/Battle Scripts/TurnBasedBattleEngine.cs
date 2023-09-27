@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.EventSystems;
 
@@ -16,7 +17,8 @@ public class TurnBasedBattleEngine : MonoBehaviour
     public BattleUI battleUI;
     public SimpleSpriteSheetAnimator hitAnimator;
 
-    private List<PlayerBattleCharacter> playerBattleCharacters = new List<PlayerBattleCharacter>();
+    public List<PlayerBattleCharacter> playerBattleCharacters = new List<PlayerBattleCharacter>();
+    private List<PlayerBattleCharacter> savedPlayerBattleCharacters = new List<PlayerBattleCharacter>();
     public List<EnemyBattleCharacter> enemyBattleCharacters = new List<EnemyBattleCharacter>();
     public List<BattleCharacter> battleCharacters = new List<BattleCharacter>();
 
@@ -45,22 +47,17 @@ public class TurnBasedBattleEngine : MonoBehaviour
         battleUI.state = BattleState.NotInBattle;
     }
 
-    private void Update()
+    public void BattleBack(InputAction.CallbackContext context)
     {
-        GetInput();
-    }
-
-    private void GetInput()
-    {
-        if(battleUI.state == BattleState.Battle)
+        if (battleUI.state == BattleState.Battle)
         {
             return;
         }
 
         //GO BACK
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (context.performed)
         {
-            switch(battleUI.state)
+            switch (battleUI.state)
             {
                 case BattleState.NotInBattle:
                     break;
@@ -68,7 +65,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
                     battleUI.ToggleAbilityMenu(false);
                     battleUI.ToggleBattleInfo(false);
                     battleUI.TogglePlayerBattleMenu(true);
-                    battleUI.state=BattleState.SelectAction;
+                    battleUI.state = BattleState.SelectAction;
                     break;
                 case BattleState.SelectAction:
                     MoveToPreviousCharacter();
@@ -80,31 +77,24 @@ public class TurnBasedBattleEngine : MonoBehaviour
                     for (int i = 0; i < selectedTargets.Count; i++)
                     {
                         selectedTargets[i].GetComponentInChildren<SelectedSpriteFlash>().StopFlash();
-                        battleUI.UpdateTargetedUIAll(selectedTargets[i], i, false);
+                        battleUI.UpdateTargetedUI(selectedTargets[i]);
                     }
+                    battleUI.TurnOnHiddenHealth();
                     battleUI.state = BattleState.SelectAction;
                     break;
                 case BattleState.SelectTargetAbility:
                     battleUI.ToggleSelectTargetMenu(false);
-                    battleUI.ToggleAbilityMenu(true, activeCharacter.battleAbilities, AbilityType.ATTACK,true);
-                    battleUI.TurnOnHiddenHealth();
+                    battleUI.ToggleAbilityMenu(true, activeCharacter.battleAbilities, AbilityType.ATTACK, true);
+                    activeCharacter.activeAbility = null;
                     for (int i = 0; i < selectedTargets.Count; i++)
                     {
                         selectedTargets[i].GetComponentInChildren<SelectedSpriteFlash>().StopFlash();
                         battleUI.UpdateTargetedUIAll(selectedTargets[i], i, false);
                     }
+                    battleUI.TurnOnHiddenHealth();
                     battleUI.state = BattleState.SelectAbility;
                     break;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (battleUI.state == BattleState.SelectAbility)
-            {
-                CheckAbilityCost();
-            }
-
         }
     }
 
@@ -126,11 +116,18 @@ public class TurnBasedBattleEngine : MonoBehaviour
         AudioManager.instance.PlayMusic(1);
 
         playerBattleCharacters = new List<PlayerBattleCharacter>(PlayerCharacterManager.instance.playerBattleCharacters);
+        savedPlayerBattleCharacters = new List<PlayerBattleCharacter>(PlayerCharacterManager.instance.playerBattleCharacters);
         enemyBattleCharacters = PlayerCharacterManager.instance.CreateNewEnemyList();
+
+        for (int i = 0; i < playerBattleCharacters.Count; i++)
+        {
+            var player = playerBattleCharacters[i];
+            playerAnimators.Add(player.GetComponentInChildren<Animator>());
+        }
 
         foreach (var player in playerBattleCharacters)
         {
-            playerAnimators.Add(player.GetComponentInChildren<Animator>());
+            player.GetComponent<SpriteRenderer>().flipX = false;
             battleCharacters.Add(player);
             player.gameObject.SetActive(true);
         }
@@ -148,11 +145,27 @@ public class TurnBasedBattleEngine : MonoBehaviour
         PlayerCharacterManager.instance.playerCharacterController.enabled = false;
         PlayerCharacterManager.instance.interactionManager.enabled = false;
 
-        for(int i = 0; i < playerBattleCharacters.Count; i++)
+        
+        for (int i = 0; i < savedPlayerBattleCharacters.Count; i++)
         {
-            playerBattleCharacters[i].transform.parent.position = playerBattleLocations[i].position;
+            var player = playerBattleCharacters[i];
+            player.transform.parent.position = playerBattleLocations[i].position;
             playerAnimators[i].SetTrigger("EnterBattle");
+            /*
+            if (player.isDead)
+            {
+                playerBattleCharacters.Remove(player);
+                battleCharacters.Remove(player);
+                playerAnimators[i].SetBool("Die", true);
+            }
+            else 
+            {
+
+            }
+            */
+
         }
+
 
         activeCharacterCount = 0;
         activeCharacter = playerBattleCharacters[activeCharacterCount];
@@ -192,6 +205,10 @@ public class TurnBasedBattleEngine : MonoBehaviour
         for (int i = 0; i < playerBattleCharacters.Count; i++)
         {
             var player = playerBattleCharacters[i];
+            if(player == activeCharacter)
+            {
+                return;
+            }
 
             for (int j = 0; j < player.targets.Count; j++)
             {
@@ -217,7 +234,6 @@ public class TurnBasedBattleEngine : MonoBehaviour
     {
         battleTurnCount = -1;
         playerBattleCharacters.Remove(deadCharacter);
-
         if (playerBattleCharacters.Count == 0)
         {
             battleLost = true;
@@ -320,7 +336,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         battleUI.state = BattleState.SelectAbility;
     }
 
-    private void CheckAbilityCost()
+    public void CheckAbilityCost()
     {
         var ability = battleUI.abilityMenu.currentUISelected.ability;
         if(activeCharacter.AP - ability.apCost < 0)
@@ -365,14 +381,15 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     private void MoveToPreviousCharacter()
     {
-        battleUI.TogglePlayerBattleMenu(false);
-        battleUI.ToggleNameSkill(false);
         activeCharacterCount--;
         if (activeCharacterCount < 0)
         {
             // back to start
             activeCharacterCount = 0;
+            return;
         }
+        battleUI.TogglePlayerBattleMenu(false);
+        battleUI.ToggleNameSkill(false);
         activeCharacter = playerBattleCharacters[activeCharacterCount];
         activeCharacter.TurnStartReset();
         StartCoroutine(PlayerTurn(battleSpeed));
@@ -400,9 +417,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
     private void MoveToSelectAll()
     {
         selectedTargets = enemyBattleCharacters.Cast<BattleCharacter>().ToList();
-        //selectedTargets = enemyBattleCharacters;
         battleUI.ToggleSelectTargetMenu(true);
-
         battleUI.state = BattleState.SelectTarget;
         if (activeCharacter.battleActionType == BattleActionType.Ability)
         {
@@ -440,6 +455,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         {
             selectedTargets[i].GetComponentInChildren<SelectedSpriteFlash>().StopFlash();
             battleUI.UpdateTargetedUIAll(selectedTargets[i], i, false);
+            battleUI.TurnOnHiddenHealth();
         }
 
         activeCharacter.targets = new List<BattleCharacter>(selectedTargets);
@@ -450,6 +466,11 @@ public class TurnBasedBattleEngine : MonoBehaviour
         battleUI.TurnOnHiddenHealth();
         battleUI.ToggleNameSkill(false);
         battleUI.ToggleBattleInfo(false);
+        foreach(BattleCharacter b in activeCharacter.targets)
+        {
+            print(activeCharacter.nameCharacter + " has targeted " + b.nameCharacter);
+        }
+
         MoveToNextCharacter();
     }
 
@@ -578,13 +599,14 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     public void ExitComabt()
     {
-        PlayerCharacterManager.instance.UpdatePlayerInfo(playerBattleCharacters);
+        PlayerCharacterManager.instance.UpdatePlayerInfo(savedPlayerBattleCharacters);
         cameraFollowTarget.target = PlayerCharacterManager.instance.playerCharacterController.transform;
         PlayerCharacterManager.instance.playerCharacterController.enabled = true;
         PlayerCharacterManager.instance.interactionManager.enabled = true;
         PlayerCharacterManager.instance.interactionManager.canInteract = true;
         battleUI.ExitBattle();
-        foreach (var player in playerBattleCharacters)
+        PlayerInputManager.Instance.SwapActionMaps("Gameplay");
+        foreach (var player in PlayerCharacterManager.instance.playerBattleCharacters)
         {
             player.gameObject.SetActive(false);
             if (player.nameCharacter == PlayerCharacterManager.instance.battleCharacter.nameCharacter)

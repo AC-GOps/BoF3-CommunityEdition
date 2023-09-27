@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class IsometricCharacterController : MonoBehaviour
 {
@@ -29,10 +30,7 @@ public class IsometricCharacterController : MonoBehaviour
 
     private void Update()
     {
-        GetMovementInput();
         SetSprite();
-        SetSpeed();
-
     }
 
     private void FixedUpdate()
@@ -76,7 +74,7 @@ public class IsometricCharacterController : MonoBehaviour
         
     }
 
-    private void GetMovementInput()
+    public void GetMovementInput(InputAction.CallbackContext context)
     {
         if (!canMove)
         {
@@ -84,7 +82,8 @@ public class IsometricCharacterController : MonoBehaviour
             return;
         }
 
-        _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector2 input = context.ReadValue<Vector2>();
+        _input = new Vector3(input.x, 0, input.y);
         _animator.SetFloat("Input", _input.normalized.magnitude);
 
         if (_input == Vector3.zero)
@@ -94,6 +93,28 @@ public class IsometricCharacterController : MonoBehaviour
         }
 
         _inputLast = _input;
+    }
+
+    public void GetSprintInput(InputAction.CallbackContext context)
+    {
+        // Sprint 
+        if (context.performed)
+        {
+            sprinting = true;
+        }
+        if (context.canceled)
+        {
+            sprinting = false;
+        }
+
+        isSprint = autoSprint;
+
+        if (sprinting)
+        {
+            isSprint = !isSprint;
+        }
+
+        _speed = isSprint ? _speedRun : _speedWalk;
     }
 
     private void SetSprite()
@@ -121,28 +142,6 @@ public class IsometricCharacterController : MonoBehaviour
             idleSprite = _animator.GetComponent<Sprite>();
         }
         _renderer.sprite = idleSprite;
-    }
-
-    private void SetSpeed()
-    {
-        isSprint = autoSprint;
-
-        if(sprinting)
-        {
-            isSprint = !isSprint;
-        }
-
-        // Sprint 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            sprinting = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            sprinting= false;
-        }
-
-        _speed = isSprint ? _speedRun: _speedWalk;
     }
 
     private void Move()

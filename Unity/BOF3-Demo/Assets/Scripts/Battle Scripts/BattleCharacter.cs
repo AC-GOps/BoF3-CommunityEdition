@@ -24,7 +24,7 @@ public class BattleCharacter : MonoBehaviour
     protected TurnBasedBattleEngine _engine;
     [HideInInspector]
     public Animator animator;
-    [HideInInspector]
+    //[HideInInspector]
     public List<BattleCharacter> targets;
     [HideInInspector]
     public BattleActionType battleActionType;
@@ -50,7 +50,7 @@ public class BattleCharacter : MonoBehaviour
     public List<Ability> battleAbilities;
     public Ability activeAbility;
 
-    public bool isDead { get; set; }
+    public bool isDead;
     public bool takenAction { get; set; }
 
 
@@ -151,10 +151,11 @@ public class BattleCharacter : MonoBehaviour
         animator.SetTrigger("Hurt");
         NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
 
-        if (HP <= 0)
+        if(HP>0)
         {
-            Die();
+            return;
         }
+        animator.SetBool("Die", true);
     }
 
     private void TakeDamage(int damage)
@@ -187,16 +188,16 @@ public class BattleCharacter : MonoBehaviour
         TurnBasedBattleEngine.Instance.PlayHitAnimation();
         NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
 
-        if (HP <= 0)
+        if (HP > 0)
         {
-            Die();
+            return;
         }
+        animator.SetBool("Die", true);
     }
 
     public virtual void Die()
     {
         isDead = true;
-        animator.SetBool("Die", true);
         print(nameCharacter + " died");
     }
 
@@ -252,6 +253,7 @@ public class BattleCharacter : MonoBehaviour
             targets.Clear();
         }
 
+        activeAbility = null;
         battleActionType = BattleActionType.Default;
         takenAction = false;
 
@@ -324,10 +326,17 @@ public class BattleCharacter : MonoBehaviour
     {
         animator.SetBool("TargetSelected", false);
         var combinedStrength = activeAbility.strength + Wisdom;
-        for(int i =0; i< targets.Count; i++)
+        /*
+        foreach (BattleCharacter target in targets)
+        {
+            target.CalculateRes(activeAbility.element, combinedStrength);
+        }
+        */
+        for (int i =0; i< targets.Count; i++)
         {
             targets[i].CalculateRes(activeAbility.element, combinedStrength);
         }
+        
         StartCoroutine(DelayedBattleEngineUpdate(2));
     }
 

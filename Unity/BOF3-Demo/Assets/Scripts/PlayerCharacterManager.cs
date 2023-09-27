@@ -20,7 +20,6 @@ public class PlayerCharacterManager : MonoBehaviour
 
     public void UpdatePlayerInfo(List<PlayerBattleCharacter> battleCharacters)
     {
-        playerBattleCharacters.Clear();
         playerBattleCharacters = new List<PlayerBattleCharacter>( battleCharacters );
     }
 

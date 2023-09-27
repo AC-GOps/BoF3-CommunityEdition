@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 using DG.Tweening;
 
@@ -31,6 +32,8 @@ public class Narrator : MonoBehaviour
 
     public float offset;
 
+    public bool spamBlock;
+
     private void Awake()
     {
         Instance = this;
@@ -50,23 +53,6 @@ public class Narrator : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyUp(KeyCode.X))
-        {
-            if (printing)
-            {
-                textSpeed = 0;
-                return;
-            }
-
-            if (currentDialogue == script.dialogueText.Count-1)
-            {
-                CloseTextBox();
-                return;
-            }
-
-            clearing = true;
-        }
-
 
         if(!clearing)
         {
@@ -75,17 +61,42 @@ public class Narrator : MonoBehaviour
         ClearText();
     }
 
-    public void SpawnNextDialogue()
+    public void GetInput(InputAction.CallbackContext context)
     {
-        
-        textBoxOpen = true; // this has to be called at the end of the text box opening
-        currentDialogue++;
-
-        if (currentDialogue == script.dialogueText.Count)
+        if (spamBlock)
         {
             return;
         }
 
+        if (context.performed)
+        {
+            spamBlock = true;
+            if (printing)
+            {
+                textSpeed = 0;
+                return;
+            }
+
+            if (currentDialogue == script.dialogueText.Count - 1)
+            {
+                CloseTextBox();
+                return;
+            }
+
+            clearing = true;
+        }
+    }
+
+    public void SpawnNextDialogue()
+    {
+        spamBlock = false;
+        textBoxOpen = true; // this has to be called at the end of the text box opening
+        currentDialogue++;
+
+        if (currentDialogue >= script.dialogueText.Count)
+        {
+            return;
+        }
 
         offset = 0.1f;
         text.fontMaterial.SetTextureOffset("_FaceTex", new Vector2(0, 1));
@@ -99,9 +110,11 @@ public class Narrator : MonoBehaviour
 
     public void ClearText()
     {
+        spamBlock = true;
         if (offset < -1)
         {
             offset = -1;
+            spamBlock = false;
             clearing = false;
             text.text = "";
             SpawnNextDialogue();
@@ -129,6 +142,7 @@ public class Narrator : MonoBehaviour
         if (currentCharIndex == newText.Length-1)
         {
             printing = false;
+            spamBlock = false;
             yield break;
         }
 
@@ -138,12 +152,11 @@ public class Narrator : MonoBehaviour
 
     public void OpenTextBox()
     {
+        spamBlock = true;
         interactionManager.interactableObject.onOpen.Invoke();
         textBox.gameObject.SetActive(true);
         text.text = "";
         currentDialogue = -1;
-        controller.canMove = false;
-        interactionManager.canInteract = false;
         textBox.DOScale(Vector3.one, 1 / textBoxSpeed).onComplete = SpawnNextDialogue;
     }
 
@@ -151,10 +164,15 @@ public class Narrator : MonoBehaviour
     {
         textBox.DOScale(Vector3.zero, 1 / textBoxSpeed).OnComplete(DeActiveate);
         textBoxOpen = false;
-        controller.canMove = true;
-        interactionManager.canInteract = true;
-
         interactionManager.interactableObject.onClose.Invoke();
+    }
+
+    public void DeActiveate()
+    {
+        textBox.gameObject.SetActive(false);
+        PlayerInputManager.Instance.SwapActionMaps("Gameplay");
+        interactionManager.canInteract = true;
+        spamBlock = false;
 
         if (interactionManager.interactableObject.battleTriggerTest)
         {
@@ -162,12 +180,7 @@ public class Narrator : MonoBehaviour
             interactionManager.interactableObject.GetComponentInParent<BattleCharacter>().gameObject.SetActive(false);
             interactionManager.interactableObject = null;
             TurnBasedBattleEngine.Instance.Init();
+            PlayerInputManager.Instance.SwapActionMaps("Battle");
         }
-
-    }
-
-    public void DeActiveate()
-    {
-        textBox.gameObject.SetActive(false);
     }
 }
