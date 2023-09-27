@@ -42,7 +42,6 @@ public class NPCContoller : MonoBehaviour
     {
         if (!isActive)
         {
-            print("NPC is not active");
             _animator.SetFloat("Input", 0);
             return;
         }

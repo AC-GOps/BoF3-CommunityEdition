@@ -40,6 +40,10 @@ public class EnemyBattleCharacter : BattleCharacter
 
     public override void Die()
     {
+        if (HP > 0)
+        {
+            return;
+        }
         base.Die();
         _engine.SetupAfterEnemyDeath(this);
     }

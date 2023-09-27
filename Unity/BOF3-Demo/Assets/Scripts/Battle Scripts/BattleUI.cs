@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
@@ -46,26 +47,36 @@ public class BattleUI : MonoBehaviour
     public GameObject playerGameOverPanel;
     public GameObject ContinueButton;
 
+    private TurnBasedBattleEngine _engine;
+
+    private VerticalLayoutGroup _verticalLayoutGroup;
+    private CanvasGroup enemyhealthbarsGroup;
+
+    private bool firstSetup;
+
     private void Awake()
     {
         instance = this;
+    }
 
+    private void Start()
+    {
+        _engine = TurnBasedBattleEngine.Instance;
     }
 
     private void Update()
     {
-        BattleUIInput();
         ShowInfoTimer();
     }
 
-    private void BattleUIInput()
+    public void BattleSelectionInput(InputAction.CallbackContext context)
     {
         if(state == BattleState.NotInBattle)
         {
             return;
         }
 
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Vector2 input =context.ReadValue<Vector2>();
 
         if (input == Vector2.zero)
         {
@@ -97,45 +108,73 @@ public class BattleUI : MonoBehaviour
 
         if (state == BattleState.SelectTarget || state == BattleState.SelectTargetAbility)
         {
-            if (input == Vector2.zero)
+            if(_engine.activeCharacter.activeAbility != null)
             {
-                return;
-            }
-            TurnBasedBattleEngine engine = TurnBasedBattleEngine.Instance;
-            eventSystem.SetSelectedGameObject(uiToEnemy.gameObject);
-            hasInput = true;
-            if (input.x > 0)
-            {
-                engine.selectedCharacterCount++;
-                if (engine.selectedCharacterCount > engine.enemyBattleCharacters.Count - 1)
+                if(_engine.activeCharacter.activeAbility.targetAll)
                 {
-                    engine.selectedCharacterCount = 0;
+                    return;
                 }
             }
-            if (input.x < 0)
+
+            if(context.performed)
             {
-                engine.selectedCharacterCount--;
-                if (engine.selectedCharacterCount < 0)
+                if (input == Vector2.zero)
                 {
-                    engine.selectedCharacterCount = engine.enemyBattleCharacters.Count - 1;
+                    return;
                 }
+
+                hasInput = true;
+                if (input.x > 0)
+                {
+                    _engine.selectedCharacterCount++;
+                    if (_engine.selectedCharacterCount > _engine.enemyBattleCharacters.Count - 1)
+                    {
+                        _engine.selectedCharacterCount = 0;
+                    }
+                }
+                if (input.x < 0)
+                {
+                    _engine.selectedCharacterCount--;
+                    if (_engine.selectedCharacterCount < 0)
+                    {
+                        _engine.selectedCharacterCount = _engine.enemyBattleCharacters.Count - 1;
+                    }
+                }
+                _engine.SetSelectedTarget();
             }
-            engine.SetSelectedTarget();
+ 
         }
+    }
 
-
+    public void BattleSelect(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if (state == BattleState.SelectAbility)
+            {
+                _engine.CheckAbilityCost();
+            }
+        }
     }
 
     public void InitEnemyHealthBars(List<EnemyBattleCharacter> enemies)
     {
+        firstSetup = true;
         EnemyTypeAmount = 0;
         EnemyHealthBarsParent.GetComponentsInChildren<EnemyHealthBarUI>(true, EnemyHealthBars);
+
+        _verticalLayoutGroup = EnemyHealthBarsParent.GetComponent<VerticalLayoutGroup>();
+        _verticalLayoutGroup.enabled = true;
+
+        enemyhealthbarsGroup = EnemyHealthBarsParent.GetComponent<CanvasGroup>();
+        enemyhealthbarsGroup.alpha = 0;
 
         foreach (EnemyHealthBarUI healthBarUI in EnemyHealthBars)
         {
             healthBarUI.healthBarName.text = "";
             healthBarUI.owner.Clear();
             healthBarUI.enemyAmount = 0;
+            healthBarUI.gameObject.SetActive(false);
         }
 
         foreach (EnemyBattleCharacter enemy in enemies)
@@ -163,6 +202,7 @@ public class BattleUI : MonoBehaviour
             }
             enemy.UpdateStats(true);
         }
+
     }
 
     public void InitPlayerHealthBars(List<PlayerBattleCharacter> players)
@@ -180,13 +220,14 @@ public class BattleUI : MonoBehaviour
             players[i].playerHealthBar = PlayerHealthBars[i];
 
             var PHB = players[i].playerHealthBar;
+            PHB.owner = player;
             PHB.gameObject.SetActive(true);
             PHB.healthBarRed.gameObject.SetActive(true);
             player.UpdateStats(true);
         }
     }
 
-    public void UpdateTargetedUI(BattleCharacter selectedTarget)
+    public void UpdateTargetedUI(BattleCharacter selectedTarget, bool tunOn = false)
     {
         uiToEnemy.ChangePosition(selectedTarget.transform.position);
         uiToEnemy.SetEnemyInfo(selectedTarget);
@@ -201,10 +242,11 @@ public class BattleUI : MonoBehaviour
         uiToEnemys[index].gameObject.SetActive(active);
         uiToEnemys[index].ChangePosition(selectedTarget.transform.position);
         uiToEnemys[index].SetEnemyInfo(selectedTarget);
-        foreach(EnemyHealthBarUI heathbar in EnemyHealthBars)
+        if (index >= EnemyTypeAmount)
         {
-            heathbar.gameObject.SetActive(!active);
+            return;
         }
+        EnemyHealthBars[index].gameObject.SetActive(!active);
     }
 
     private void TurnOffHealthBar(int index, EnemyHealthBarUI enemyHealth)
@@ -225,7 +267,7 @@ public class BattleUI : MonoBehaviour
         }
 
         //print("only 1 owner");
-        currentHiddenHealth = EnemyHealthBars[index].gameObject;
+        currentHiddenHealth = enemyHealth.gameObject;
         currentHiddenHealth.SetActive(false);
     }
 
@@ -234,7 +276,13 @@ public class BattleUI : MonoBehaviour
         if (enemyHealth.owner.Count > 1)
         {
             enemyHealth.healthBarsRed[index].gameObject.SetActive(false);
+            return;
         }
+        foreach(Image ui in enemyHealth.healthBarsRed)
+        {
+            ui.gameObject.SetActive(false);
+        }
+        enemyHealth.gameObject.SetActive(false);
     }
 
     public void EnemyUIOnDeath(EnemyBattleCharacter character)
@@ -304,11 +352,29 @@ public class BattleUI : MonoBehaviour
 
     public void ToggleBattleHUD(bool active)
     {
+
         playerbattleHUD.SetActive(active);
+        if(!firstSetup)
+        {
+            return;
+        }
+        playerbattleHUD.GetComponent<CanvasGroup>().alpha = 0;
+        StartCoroutine(ToggleVerticalLayout());
+    }
+
+    private IEnumerator ToggleVerticalLayout()
+    {
+        firstSetup = false;
+        _verticalLayoutGroup.enabled = true;
+        yield return new WaitForSeconds(0.1f);
+        _verticalLayoutGroup.enabled = false;
+        enemyhealthbarsGroup.alpha = 1;
+        playerbattleHUD.GetComponent<CanvasGroup>().alpha = 1;
     }
 
     public void ToggleSelectTargetMenu(bool active)
     {
+        eventSystem.SetSelectedGameObject(null);
         selectTargetMenu.SetActive(active);
         foreach(UIToEnemy ui in uiToEnemys)
         {
@@ -319,6 +385,14 @@ public class BattleUI : MonoBehaviour
         {
             return;
         }
+
+        // may need to delay this to stop the double selecting
+        StartCoroutine(DealyedSetSelected());
+    }
+
+    private IEnumerator DealyedSetSelected()
+    {
+        yield return new WaitForSeconds(0.2f);
         eventSystem.SetSelectedGameObject(uiToEnemy.gameObject);
     }
 
@@ -365,7 +439,7 @@ public class BattleUI : MonoBehaviour
     {
         playerbattlemenu.SetActive(false);
         playerbattleHUD.SetActive(false);
-        foreach (Animator animators in TurnBasedBattleEngine.Instance.playerAnimators)
+        foreach (Animator animators in _engine.playerAnimators)
         {
             animators.GetComponent<SpriteRenderer>().sortingLayerName = "Forground";
         }

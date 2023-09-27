@@ -22,6 +22,7 @@ public class EnemyHealthBarUI : MonoBehaviour
             healthBarsRed[index].fillAmount = percentage;
             return;
         }
-        healthBarsRed[index].DOFillAmount(percentage, 1f);
+        //healthBarsRed[index].DOFillAmount(percentage, 1f);
+        healthBarsRed[index].DOFillAmount(percentage, 1f).OnComplete(owner[index].Die);
     }
 }

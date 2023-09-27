@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -15,28 +16,25 @@ public class InteractionManager : MonoBehaviour
         _Narrator = Narrator.Instance;
     }
 
-    public void Update()
-    {
-        GetInteractionInput();
-    }
-
-    private void GetInteractionInput()
+    public void GetInteractionInput(InputAction.CallbackContext context)
     {
         if(!canInteract)
         {
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (interactableObject == null)
         {
-            if(interactableObject == null)
-            {
-                return ;
-            }
+            return;
+        }
 
+        if (context.performed)
+        {
             _Narrator.script = interactableObject.used ? interactableObject.scriptUsed : interactableObject.script;
             _Narrator.OpenTextBox();
             interactableObject.used = true;
+            canInteract = false;
+            PlayerInputManager.Instance.SwapActionMaps("Narration");
         }
     }
 
