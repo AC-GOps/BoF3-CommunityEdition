@@ -9,6 +9,12 @@ public class CameraFollowTarget : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (target == null) return;
         transform.position = target.position;
+    }
+
+    public void SetTarget(Transform target)
+    {
+        this.target = target;
     }
 }

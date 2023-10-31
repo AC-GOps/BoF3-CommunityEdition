@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class InteractionManager : MonoBehaviour
 {
-    private Narrator _Narrator;
+    public Narrator _Narrator;
 
     public InteractableObject interactableObject;
 

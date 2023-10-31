@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 
 public enum BattleState
@@ -16,6 +17,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
     public static TurnBasedBattleEngine Instance;
     public BattleUI battleUI;
     public SimpleSpriteSheetAnimator hitAnimator;
+    public RandomBattleManager randomBattleManager;
 
     public List<PlayerBattleCharacter> playerBattleCharacters = new List<PlayerBattleCharacter>();
     private List<PlayerBattleCharacter> savedPlayerBattleCharacters = new List<PlayerBattleCharacter>();
@@ -107,17 +109,41 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     #region BATTLE SETUP
 
+    public void SetupBattleLocations(List<Transform> BattleLocations)
+    {
+        playerBattleLocations.Clear();
+        enemyBattleLocations.Clear();
+        for(int i = 0; i < BattleLocations.Count; i++)
+        {
+            if(i >= 1 && i <4)
+            {
+                playerBattleLocations.Add(BattleLocations[i]);
+            }
+            else if(i >= 4 && i < 7)
+            {
+                enemyBattleLocations.Add(BattleLocations[i]);
+            }
+            if (i == 7)
+            {
+                battleCamLocation = BattleLocations[i];
+            }
+        }
+    }
+
     void SetupBattle()
     {
         ResetAll();
 
+        PlayerInputManager.Instance.SwapActionMaps("Battle");
+
         battleWon = false;
 
-        AudioManager.instance.PlayMusic(1);
+        AudioManager.instance.PlayMusic(2);
 
         playerBattleCharacters = new List<PlayerBattleCharacter>(PlayerCharacterManager.instance.playerBattleCharacters);
         savedPlayerBattleCharacters = new List<PlayerBattleCharacter>(PlayerCharacterManager.instance.playerBattleCharacters);
         enemyBattleCharacters = PlayerCharacterManager.instance.CreateNewEnemyList();
+
 
         for (int i = 0; i < playerBattleCharacters.Count; i++)
         {
@@ -149,8 +175,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         for (int i = 0; i < savedPlayerBattleCharacters.Count; i++)
         {
             var player = playerBattleCharacters[i];
-            player.transform.parent.position = playerBattleLocations[i].position;
-            playerAnimators[i].SetTrigger("EnterBattle");
+            var render = player.GetComponent<SpriteRenderer>();
             /*
             if (player.isDead)
             {
@@ -163,7 +188,11 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
             }
             */
-
+            render.DOFade(0, 0f);
+            player.transform.parent.position = playerBattleLocations[i].position;
+            render.DOFade(1, 0.3f);
+            playerAnimators[i].SetTrigger("EnterBattle");
+            playerAnimators[i].speed = 1;
         }
 
 
@@ -174,7 +203,10 @@ public class TurnBasedBattleEngine : MonoBehaviour
         //Setup Enemies
         for (int i = 0; i < enemyBattleCharacters.Count; i++)
         {
+            var render = enemyBattleCharacters[i].GetComponent<SpriteRenderer>();
+            render.DOFade(0, 0f);
             enemyBattleCharacters[i].transform.parent.position = enemyBattleLocations[i].position;
+            render.DOFade(1, 0.3f);
             enemyAnimators[i].SetAnimatorsTriggers();
             enemyBattleCharacters[i].SetupEnemyFirstTime();
         }
@@ -554,7 +586,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         battleUI.state = BattleState.Battle;
         if(battleWon)
         {
-            AudioManager.instance.PlayMusic(0);
+            AudioManager.instance.PlayMusic(1);
             battleUI.EnableBattleWon();
             foreach (var player in playerBattleCharacters)
             {
@@ -599,12 +631,14 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
     public void ExitComabt()
     {
+        randomBattleManager.ResetRandomBattle();
         PlayerCharacterManager.instance.UpdatePlayerInfo(savedPlayerBattleCharacters);
         cameraFollowTarget.target = PlayerCharacterManager.instance.playerCharacterController.transform;
         PlayerCharacterManager.instance.playerCharacterController.enabled = true;
         PlayerCharacterManager.instance.interactionManager.enabled = true;
         PlayerCharacterManager.instance.interactionManager.canInteract = true;
         battleUI.ExitBattle();
+        AreaManager.instance.ShowGameObjects();
         PlayerInputManager.Instance.SwapActionMaps("Gameplay");
         foreach (var player in PlayerCharacterManager.instance.playerBattleCharacters)
         {

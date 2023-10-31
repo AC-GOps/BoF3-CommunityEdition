@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 663ac1fc41d0fce43aa81e10512bf371, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0dc17372fc863ff498c7377a15635b3c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -160,7 +160,7 @@ Transform:
   - {fileID: 3727504272440750512}
   - {fileID: 5853507000780983422}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8238365596806146167
 MonoBehaviour:
@@ -175,8 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicClips:
-  - {fileID: 8300000, guid: 663ac1fc41d0fce43aa81e10512bf371, type: 3}
+  - {fileID: 8300000, guid: 7125475004501bc4fa59ebcc30dbfb0a, type: 3}
+  - {fileID: 8300000, guid: 0dc17372fc863ff498c7377a15635b3c, type: 3}
   - {fileID: 8300000, guid: 5a0c25af28ce0f745bd7a09b869f900a, type: 3}
+  - {fileID: 8300000, guid: 663ac1fc41d0fce43aa81e10512bf371, type: 3}
   effectClips:
   - {fileID: 8300000, guid: cd8ddcdc9a074364487cee8cdc19a612, type: 3}
   - {fileID: 8300000, guid: 6ebb4a0c5e99dc44e96241f2f772fb81, type: 3}

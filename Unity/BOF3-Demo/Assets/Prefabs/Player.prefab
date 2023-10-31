@@ -150,6 +150,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c70b4d2b7001864a99e5f84b9119581, type: 2}
   - {fileID: 11400000, guid: fd065ad80d13f6549ace274df02b7bcd, type: 2}
   activeAbility: {fileID: 0}
+  isDead: 0
   playerHealthBar: {fileID: 0}
 --- !u!1 &7678464543481941338
 GameObject:
@@ -187,7 +188,7 @@ Transform:
   m_Children:
   - {fileID: 811189766719813234}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3309902591019095674
 Rigidbody:
@@ -281,6 +282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1c2f89c045d0446b2d8eea087934f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _Narrator: {fileID: 0}
   interactableObject: {fileID: 0}
   canInteract: 0
 --- !u!114 &3897066800751810688
@@ -420,6 +422,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6be3c2a9-f4a6-4945-a2cc-4a66abbd29c2
     m_ActionName: Battle/Select1[/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 538f9b7d-2abd-4414-8dde-ad7ee1fc283c
+    m_ActionName: Gameplay/Open Menu[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 777607c1-eceb-4ac7-8e0c-824589ae197e
+    m_ActionName: Menu/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db49e0a6-beb1-4963-8360-5ef2b622601c
+    m_ActionName: Menu/Close Menu[/XInputControllerWindows/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Gameplay

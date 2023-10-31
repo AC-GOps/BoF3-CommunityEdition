@@ -26,15 +26,15 @@ public class PlayerInputManager : MonoBehaviour
 
     public void SwapActionMaps(string actionmapName)
     {
-        InputActionMap actionmap = playerInput.actions.FindActionMap(actionmapName);
-
-        if (actionmap.enabled)
+        if (actionmapName == "")
         {
+            playerInput.currentActionMap = null;
             return;
         }
 
-        print(actionmap.name + " is now Active");
-        inputAction.Disable();
-        actionmap.Enable();
+        //InputActionMap actionmap = playerInput.actions.FindActionMap(actionmapName);
+
+        print(actionmapName + " is now Active");
+        playerInput.SwitchCurrentActionMap(actionmapName);
     }
 }

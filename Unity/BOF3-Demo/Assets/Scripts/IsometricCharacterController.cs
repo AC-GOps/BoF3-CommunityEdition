@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class IsometricCharacterController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class IsometricCharacterController : MonoBehaviour
     public Animator _animator;
 
     public SpriteRenderer _renderer;
+    public SpriteRenderer _emoji;
 
     public bool isSprint;
     public bool sprinting;
@@ -27,6 +29,8 @@ public class IsometricCharacterController : MonoBehaviour
     public Vector3 offset;
 
     public bool stickToGround;
+
+    public RandomBattleManager battleManager;
 
     private void Update()
     {
@@ -42,19 +46,20 @@ public class IsometricCharacterController : MonoBehaviour
         StickToGround();
     }
 
+    public void SetEmoji()
+    {
+        _emoji.transform.DOScale(2, 0.1f).SetLoops(2,LoopType.Yoyo);
+    }
+
     private void StopSlipping()
     {
         // Perform a raycast downward to check for the ground.
-
         _rb.constraints = RigidbodyConstraints.FreezeRotation;
         if (_input.magnitude == 0)
         {
             _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
             return;
         }
-
-
-
     }
 
     private void StickToGround()
@@ -70,12 +75,16 @@ public class IsometricCharacterController : MonoBehaviour
             Vector3 newVelocity = _rb.velocity;
             newVelocity.y = 0f; // Set the Y velocity to zero.
             _rb.velocity = newVelocity;
-        }
-        
+        }      
     }
 
     public void GetMovementInput(InputAction.CallbackContext context)
     {
+        if (this.isActiveAndEnabled == false)
+        {
+            return;
+        }
+
         if (!canMove)
         {
             _animator.SetFloat("Input", 0);
@@ -85,6 +94,15 @@ public class IsometricCharacterController : MonoBehaviour
         Vector2 input = context.ReadValue<Vector2>();
         _input = new Vector3(input.x, 0, input.y);
         _animator.SetFloat("Input", _input.normalized.magnitude);
+
+        if (context.performed)
+        {
+            battleManager.playerMoving = true;
+        }
+        if(context.canceled)
+        {
+            battleManager.playerMoving = false;
+        }
 
         if (_input == Vector3.zero)
         {
@@ -146,11 +164,6 @@ public class IsometricCharacterController : MonoBehaviour
 
     private void Move()
     {
-
-        // Bad collision
-        //_rb.MovePosition(transform.position + _input.ToIso().normalized * _speed * Time.fixedDeltaTime);
-
-        // Bad movement
         if (!canMove)
         {
             return;

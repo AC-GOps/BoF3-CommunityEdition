@@ -7,22 +7,10 @@ public class SceneChanger : MonoBehaviour
 {
     public FadeImage fade;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public IEnumerator LoadSceneWithFade(string sceneName)
     {
         fade.FadeOut();
-        yield return new WaitForSeconds(fade.Time);
+        yield return new WaitForSeconds(fade.Time +1);
         LoadSceneByname(sceneName);
     }
 

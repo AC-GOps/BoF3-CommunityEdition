@@ -28,12 +28,14 @@ public class BattleUI : MonoBehaviour
 
     public List<EnemyHealthBarUI> EnemyHealthBars = new List<EnemyHealthBarUI>();
     private int EnemyTypeAmount;
+    private int EnemyAmount;
     public GameObject EnemyHealthBarsParent;
 
     public UIToEnemy uiToEnemy;
     public List<UIToEnemy> uiToEnemys;
 
     public List<PlayerHealthBarUI> PlayerHealthBars = new List<PlayerHealthBarUI>();
+    public List<NumberBouncer> NumberBouncers = new List<NumberBouncer>();
     public GameObject currentHiddenHealth;
 
     public BattleState state;
@@ -161,6 +163,7 @@ public class BattleUI : MonoBehaviour
     {
         firstSetup = true;
         EnemyTypeAmount = 0;
+        EnemyAmount = 0;
         EnemyHealthBarsParent.GetComponentsInChildren<EnemyHealthBarUI>(true, EnemyHealthBars);
 
         _verticalLayoutGroup = EnemyHealthBarsParent.GetComponent<VerticalLayoutGroup>();
@@ -201,6 +204,8 @@ public class BattleUI : MonoBehaviour
                 EnemyTypeAmount++;
             }
             enemy.UpdateStats(true);
+            enemy.numBouncer = NumberBouncers[EnemyAmount];
+            EnemyAmount++;
         }
 
     }

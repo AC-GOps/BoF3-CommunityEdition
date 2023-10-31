@@ -15,6 +15,7 @@ public class NPCContoller : MonoBehaviour
     public Vector3 TargetLocation;
     public int TargetIndex;
     public bool isActive;
+    public bool looping;
 
     private void SetSprite()
     {
@@ -34,7 +35,6 @@ public class NPCContoller : MonoBehaviour
     void Start()
     {
         TargetIndex = 0;
-        isActive = true;
     }
 
     // Update is called once per frame
@@ -63,6 +63,12 @@ public class NPCContoller : MonoBehaviour
         isActive = !isActive;
     }
 
+    public void SetTarget(Transform target)
+    {
+        targets.Add(target);
+        isActive = true;
+    }
+
     private void CheckDistance()
     {
         float distance = Vector3.Distance(transform.position, targets[TargetIndex].position);
@@ -71,7 +77,16 @@ public class NPCContoller : MonoBehaviour
             TargetIndex++;
             if(TargetIndex>targets.Count-1)
             {
-                TargetIndex = 0;
+                print("Reached end of targets");
+                if(looping)
+                {
+                    TargetIndex = 0;
+                    return;
+                }
+
+                _animator.SetFloat("Input", 0);
+                isActive = false;
+                CutSceneManager.instance.OnCompleteEvent();
             }
         }
     }
