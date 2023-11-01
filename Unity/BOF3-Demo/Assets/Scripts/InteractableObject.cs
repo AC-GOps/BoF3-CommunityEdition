@@ -13,8 +13,6 @@ public class InteractableObject : MonoBehaviour
     public UnityEvent onClose; 
     public UnityEvent onOpen; 
 
-    //public bool triggerAction;
     public bool battleTriggerTest;
 
-    // add item
 }

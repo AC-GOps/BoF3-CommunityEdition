@@ -53,6 +53,8 @@ public class BattleCharacter : MonoBehaviour
     public bool isDead;
     public bool takenAction { get; set; }
 
+    public NumberBouncer numBouncer;
+
 
 
     public void CalculateRes(AbilityElement type, int damage)
@@ -120,19 +122,20 @@ public class BattleCharacter : MonoBehaviour
             print(nameCharacter + " dodged attack");
             animator.SetTrigger("Dodge");
             dam = -1;
-            NumberBouncer.Instance.PlayTextBounceAtTarget(transform, "Miss");
+            numBouncer.PlayTextBounceAtTarget(transform, "Miss");
         }
     }
 
     private void TakeMagicDamage(int damage)
     {
         int actualDamage = damage - Wisdom;
+        numBouncer.PlayNumberBounceAtTarget(transform, actualDamage);
 
         if (actualDamage == 0)
         {
             actualDamage = 0;
             print(nameCharacter + " took no damage");
-            NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
+
             return;
         }
 
@@ -142,14 +145,12 @@ public class BattleCharacter : MonoBehaviour
         if (actualDamage < 0)
         {
             print(nameCharacter + " is healed by " + actualDamage + " damage");
-            NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
             return;
         }
 
         PlayHurtSFX();
         print(nameCharacter + " took " + actualDamage + " damage");
         animator.SetTrigger("Hurt");
-        NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
 
         if(HP>0)
         {
@@ -169,13 +170,12 @@ public class BattleCharacter : MonoBehaviour
         }
 
         int actualDamage = damage - Defence;
+        numBouncer.PlayNumberBounceAtTarget(transform, actualDamage);
 
         if (actualDamage < 0)
         {
             actualDamage = 0;
             print(nameCharacter + " took no damage");
-            //animator.SetTrigger("No Damage");
-            NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
             return;
         }
 
@@ -186,7 +186,6 @@ public class BattleCharacter : MonoBehaviour
         UpdateStats();
         animator.SetTrigger("Hurt");
         TurnBasedBattleEngine.Instance.PlayHitAnimation();
-        NumberBouncer.Instance.PlayNumberBounceAtTarget(transform, actualDamage);
 
         if (HP > 0)
         {

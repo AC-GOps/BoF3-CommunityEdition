@@ -59,15 +59,18 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.1f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\QuitGame.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\Ability.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Display.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\BattleUI.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\TurnBasedBattleEngine.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_SpriteFader.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Player.cs" />
+    <Compile Include="Assets\MoveObject.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\SpriteSheetSSU.cs" />
+    <Compile Include="Assets\Scripts\TweenRotator.cs" />
     <Compile Include="Assets\Scripts\MainMenuController.cs" />
+    <Compile Include="Assets\Scripts\TweenFader.cs" />
+    <Compile Include="Assets\Scripts\PlayerMenu.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\MaterialInstancerSSU.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\BattleCharacter.cs" />
     <Compile Include="Assets\Scripts\FollowTarget.cs" />
@@ -91,12 +94,16 @@
     <Compile Include="Assets\Spells Pack\Demo\Scripts\Projectile.cs" />
     <Compile Include="Assets\Scripts\InteractableObject.cs" />
     <Compile Include="Assets\AbilityManager.cs" />
+    <Compile Include="Assets\Scripts\AreaChanger.cs" />
     <Compile Include="Assets\Scripts\FadeIN.cs" />
+    <Compile Include="Assets\BirdController.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Trigger.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_VectorPicker.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\WindManagerSSU.cs" />
+    <Compile Include="Assets\Scripts\AreaManager.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\InteractiveWindSSU.cs" />
     <Compile Include="Assets\Scripts\Battle Scripts\EnemyBattleCharcter.cs" />
+    <Compile Include="Assets\CrystalManager.cs" />
     <Compile Include="Assets\Scripts\SceneChanger.cs" />
     <Compile Include="Assets\Scripts\FlashText.cs" />
     <Compile Include="Assets\Fonts\FontAutoSetter.cs" />
@@ -104,6 +111,7 @@
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_GUI.cs" />
     <Compile Include="Assets\Scripts\UI\UIHelper.cs" />
     <Compile Include="Assets\Scripts\AudioManager.cs" />
+    <Compile Include="Assets\RandomBattleManager.cs" />
     <Compile Include="Assets\Spells Pack\Demo\Scripts\Demo.cs" />
     <Compile Include="Assets\Spells Pack\Demo\Scripts\CreateProjectile.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerHealthBarUI.cs" />
@@ -113,8 +121,10 @@
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Shaders.cs" />
     <Compile Include="Assets\Scripts\DialogueScriptable.cs" />
     <Compile Include="Assets\Scripts\UI\UIToEnemy.cs" />
+    <Compile Include="Assets\BattleLocations.cs" />
     <Compile Include="Assets\Scripts\PlayerInputManager.cs" />
     <Compile Include="Assets\Scripts\UI\KillTheMouse.cs" />
+    <Compile Include="Assets\CutSceneManager.cs" />
     <Compile Include="Assets\Scripts\SelectedSpriteFlash.cs" />
     <Compile Include="Assets\Scripts\SimpleSpriteSheetAnimator.cs" />
     <Compile Include="Assets\AbilityUI.cs" />

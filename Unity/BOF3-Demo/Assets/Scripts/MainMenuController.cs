@@ -6,32 +6,25 @@ using DG.Tweening;
 
 public class MainMenuController : MonoBehaviour
 {
-    public FadeImage fade;
-    public AudioSource BG;
-    public IEnumerator StartGame()
+    public SceneChanger sceneChanger;
+    public AudioClip EnterGame;
+    public FlashText flashText;
+
+    private void Awake()
     {
-        fade.FadeIn();
-        BG.DOFade(0, 0.5f);
-        yield return new WaitForSeconds(fade.Time);
-        SceneChanger.LoadSceneByname("DemoScene");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        
+        //AudioManager.instance.PlayMusic(0);
     }
 
-    private void Update()
+    public void StartGame()
     {
-        if(Input.anyKeyDown)
-        {
-            if(Input.GetMouseButtonDown(0))
-            {
-                return;
-            }
-          StartCoroutine(StartGame());
-        }
+        flashText.EndFlash();
+        AudioManager.instance.PlaySFXFromClip(EnterGame);
+        sceneChanger.LoadSceneBynameAsync("Forest");
     }
 }

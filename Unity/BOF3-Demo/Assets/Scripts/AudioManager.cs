@@ -55,7 +55,6 @@ public class AudioManager : MonoBehaviour
     {
         backgroundMusic.DOFade(0, 1f).OnComplete(FadeMusicIn);
         currentClipIndex = clipIndex;
-
     }
     private void FadeMusicIn()
     {
@@ -75,6 +74,18 @@ public class AudioManager : MonoBehaviour
         soundEffect.PlayOneShot(clip);
     }
 
+    public void PlaySFXFromClipLooping(AudioClip clip)
+    {
+        soundEffect.clip = clip;
+        soundEffect.loop = true;
+        soundEffect.Play();
+    }
+
+    public void StopSFX()
+    {
+        soundEffect.loop = false;
+        soundEffect.Stop();
+    }
     // Adjust music volume
     public void SetMusicVolume(float volume)
     {

@@ -61,6 +61,11 @@ public class Narrator : MonoBehaviour
         ClearText();
     }
 
+    public void SetDialouge(DialogueScript Dscript)
+    {
+        script = Dscript;
+    }
+
     public void GetInput(InputAction.CallbackContext context)
     {
         if (spamBlock)
@@ -153,7 +158,12 @@ public class Narrator : MonoBehaviour
     public void OpenTextBox()
     {
         spamBlock = true;
-        interactionManager.interactableObject.onOpen.Invoke();
+
+        if(interactionManager.interactableObject!=null)
+        {
+            interactionManager.interactableObject.onOpen.Invoke();
+        }
+
         textBox.gameObject.SetActive(true);
         text.text = "";
         currentDialogue = -1;
@@ -164,23 +174,25 @@ public class Narrator : MonoBehaviour
     {
         textBox.DOScale(Vector3.zero, 1 / textBoxSpeed).OnComplete(DeActiveate);
         textBoxOpen = false;
-        interactionManager.interactableObject.onClose.Invoke();
+        if (interactionManager.interactableObject != null)
+        {
+            interactionManager.interactableObject.onClose.Invoke();
+        }
     }
 
     public void DeActiveate()
     {
         textBox.gameObject.SetActive(false);
-        PlayerInputManager.Instance.SwapActionMaps("Gameplay");
-        interactionManager.canInteract = true;
         spamBlock = false;
-
-        if (interactionManager.interactableObject.battleTriggerTest)
+        if (interactionManager.interactableObject != null)
         {
-            interactionManager.canInteract = false;
-            interactionManager.interactableObject.GetComponentInParent<BattleCharacter>().gameObject.SetActive(false);
-            interactionManager.interactableObject = null;
-            TurnBasedBattleEngine.Instance.Init();
-            PlayerInputManager.Instance.SwapActionMaps("Battle");
+            if (interactionManager.interactableObject.battleTriggerTest)
+            {
+                return;
+            }
         }
+
+        interactionManager.canInteract = true;
+        PlayerInputManager.Instance.SwapActionMaps("Gameplay");
     }
 }

@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 8839323954283518509}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1515744048529146471
 MonoBehaviour:
@@ -74,7 +74,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7821010349901046969}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f3da3806554a3f64dbf48dd979e32893, type: 3}
   battleAbilities: []
   activeAbility: {fileID: 0}
+  isDead: 0
   healthBarUI: {fileID: 0}
   ammount: 0
 --- !u!114 &9047749770174056237
