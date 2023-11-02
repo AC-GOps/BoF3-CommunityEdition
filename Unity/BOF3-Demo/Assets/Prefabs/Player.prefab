@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330361050156220086}
   m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: -0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1010916474, guid: 89b4dd9785e71284fae6b66d070505cb, type: 3}
+  m_Sprite: {fileID: -237366899, guid: 54b1432b627aad04f9ae8d00175ab873, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &8360774794922446300
 Animator:
   serializedVersion: 5
@@ -140,18 +140,104 @@ MonoBehaviour:
   Reprisal: 0
   Resistances:
   - abilityType: 1
-    Level: 0
+    Level: 4
   attackSounds:
   - {fileID: 8300000, guid: d1c336d063749624da978f6273ef7dc8, type: 3}
   hurtSounds:
   - {fileID: 8300000, guid: d23a59e12ef8c8b42bb137473ea7a2a8, type: 3}
   battleAbilities:
-  - {fileID: 11400000, guid: 30986850e811cf445b1b44d37cccafdd, type: 2}
+  - {fileID: 11400000, guid: ea27b7718dfe2524aa0b55df3f612c20, type: 2}
   - {fileID: 11400000, guid: 7c70b4d2b7001864a99e5f84b9119581, type: 2}
+  - {fileID: 11400000, guid: 30986850e811cf445b1b44d37cccafdd, type: 2}
   - {fileID: 11400000, guid: fd065ad80d13f6549ace274df02b7bcd, type: 2}
   activeAbility: {fileID: 0}
   isDead: 0
+  numBouncer: {fileID: 0}
   playerHealthBar: {fileID: 0}
+--- !u!1 &6509062241627614841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4121024311947854073}
+  - component: {fileID: 7809900667756789844}
+  m_Layer: 0
+  m_Name: Emoji
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4121024311947854073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6509062241627614841}
+  m_LocalRotation: {x: 0, y: 0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 1.35, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3697542713675345476}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+--- !u!212 &7809900667756789844
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6509062241627614841}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 75c192223ee03e742b428d3f29e38206, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &7678464543481941338
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,6 +253,7 @@ GameObject:
   - component: {fileID: 6273298158712414057}
   - component: {fileID: 3897066800751810688}
   - component: {fileID: 3291704434292747505}
+  - component: {fileID: 7039879590217691553}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -187,8 +274,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 811189766719813234}
+  - {fileID: 4121024311947854073}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3309902591019095674
 Rigidbody:
@@ -237,7 +325,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.34
+  m_Height: 1.63
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &556099850041997027
@@ -260,16 +348,18 @@ MonoBehaviour:
   _input: {x: 0, y: 0, z: 0}
   _animator: {fileID: 8360774794922446300}
   _renderer: {fileID: 2334936247529671378}
+  _emoji: {fileID: 7809900667756789844}
   isSprint: 0
   sprinting: 0
   autoSprint: 0
   canMove: 1
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  raycastDistance: 1
-  offset: {x: 0, y: 0, z: 0}
-  stickToGround: 0
+    m_Bits: 1
+  raycastDistance: 2
+  offset: {x: 0, y: 0.75, z: 0}
+  stickToGround: 1
+  battleManager: {fileID: 0}
 --- !u!114 &6273298158712414057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,22 +468,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
-        m_MethodName: BattleSelect
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 00a12fc2-4b17-4de6-b59d-b53acf15cc66
-    m_ActionName: Battle/Interact[/XInputControllerWindows/buttonSouth]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
         m_MethodName: BattleSelectionInput
         m_Mode: 0
         m_Arguments:
@@ -423,17 +497,81 @@ MonoBehaviour:
     m_ActionId: 6be3c2a9-f4a6-4945-a2cc-4a66abbd29c2
     m_ActionName: Battle/Select1[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerMenu, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 538f9b7d-2abd-4414-8dde-ad7ee1fc283c
     m_ActionName: Gameplay/Open Menu[/XInputControllerWindows/start]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 777607c1-eceb-4ac7-8e0c-824589ae197e
-    m_ActionName: Menu/New action
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: PlayerMenu, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: db49e0a6-beb1-4963-8360-5ef2b622601c
+    m_ActionName: Menu/Open Menu[/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: CutSceneManager, Assembly-CSharp
+        m_MethodName: GetInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6140498c-0436-43aa-9fcf-56478624ddcc
+    m_ActionName: CutScene/Interact[/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: db49e0a6-beb1-4963-8360-5ef2b622601c
-    m_ActionName: Menu/Close Menu[/XInputControllerWindows/start]
+    m_ActionId: 179fbc8a-b595-4dff-9e0e-5a4ada685c47
+    m_ActionName: UI/Select[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 509857d4-8814-4322-8cc6-9635e0573e6a
+    m_ActionName: Menu/AnyButton[/Keyboard/anyKey,/XInputControllerWindows/buttonEast,/XInputControllerWindows/buttonWest,/XInputControllerWindows/buttonNorth,/XInputControllerWindows/buttonSouth,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BattleUI, Assembly-CSharp
+        m_MethodName: BattleSelect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7a2ddd08-e8ce-4c18-86b6-0bc82dbdff51
+    m_ActionName: Battle/New action
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 86af98cb-fa56-4d36-ad5b-0402db50c315
+    m_ActionName: UI/Move[/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Gameplay
@@ -453,3 +591,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAction: {fileID: 0}
   playerInput: {fileID: 3897066800751810688}
+--- !u!114 &7039879590217691553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678464543481941338}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28a8bd77ab8f8d742bf18b4a66c5b649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 8360774794922446300}
+  _renderer: {fileID: 2334936247529671378}
+  _body: {fileID: 3309902591019095674}
+  targets: []
+  m_Speed: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  offset: {x: 0, y: 0, z: 0}
+  TargetLocation: {x: 0, y: 0, z: 0}
+  TargetIndex: 0
+  isActive: 0
+  looping: 0
