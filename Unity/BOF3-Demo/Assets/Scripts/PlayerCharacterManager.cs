@@ -9,6 +9,10 @@ public class PlayerCharacterManager : MonoBehaviour
     public IsometricCharacterController playerCharacterController;
     public BattleCharacter battleCharacter;
     public InteractionManager interactionManager;
+    [Range(1, 3)]
+    public int enemyMax;
+    [Range(1, 3)]
+    public int enemyMin;
 
     public List<EnemyBattleCharacter> enemyBattleCharacters = new List<EnemyBattleCharacter>();
     public List<PlayerBattleCharacter> playerBattleCharacters = new List<PlayerBattleCharacter>();
@@ -28,7 +32,7 @@ public class PlayerCharacterManager : MonoBehaviour
         List<EnemyBattleCharacter> CreatedList = new List<EnemyBattleCharacter>();
         List<EnemyBattleCharacter> TempList = new List<EnemyBattleCharacter>(enemyBattleCharacters);
 
-        int enemyamount = Random.Range( 3, 4 );
+        int enemyamount = Random.Range( enemyMin, enemyMax+1);
         print("There are " + enemyamount + " enemies");
 
         for (int i = 0; i < enemyamount; i++)
@@ -41,5 +45,14 @@ public class PlayerCharacterManager : MonoBehaviour
         }
         return CreatedList;
 
+    }
+
+    public void FullHealAllCharacters()
+    {
+        foreach(PlayerBattleCharacter character in playerBattleCharacters)
+        {
+            character.HP = character.maxHP;
+            character.AP = character.maxAP;
+        }
     }
 }

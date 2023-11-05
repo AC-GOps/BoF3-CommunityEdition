@@ -67,7 +67,8 @@ public class RandomBattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         var player = PlayerCharacterManager.instance.playerCharacterController;
-        player._renderer.DOFade(0, 0.2f);
+        player._renderer.DOFade(0, 0.3f);
+        yield return new WaitForSeconds(0.3f);
         player.transform.DOMove(battleLocations.Locations[7].position, 1f);
         BattleEngine.SetupBattleLocations(battleLocations.Locations);
         yield return new WaitForSeconds(1f);

@@ -657,7 +657,7 @@ MonoBehaviour:
   - {fileID: 143800012005584936}
   - {fileID: 2154398925476825636}
   - {fileID: 243022381358419224}
-  healthBarsRed:
+  healthBarsParent:
   - {fileID: 6351993317796504933}
   - {fileID: 6479812211793642947}
   - {fileID: 5178738032976878494}

@@ -38,6 +38,18 @@ public class InteractionManager : MonoBehaviour
         }
     }
 
+    public void CallDealyedCanInteract()
+    {
+        StartCoroutine(DealyedCanInteract());
+    }
+
+    public IEnumerator DealyedCanInteract()
+    {
+        canInteract = false;
+        yield return new WaitForSeconds(2);
+        canInteract = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Interactable"))

@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 54197705078495260}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6095190604401256989
 MonoBehaviour:
@@ -171,9 +171,9 @@ MonoBehaviour:
   battleActionType: 0
   nameCharacter: Gonghead
   HP: 0
-  maxHP: 20
+  maxHP: 22
   Defence: 0
-  baseDefence: 5
+  baseDefence: 4
   AP: 0
   maxAP: 0
   Agility: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   Dodge: 10
   Drop: 0
   DeathStat: 0
-  Power: 5
+  Power: 11
   Wisdom: 0
   PsionicStatChance: 0
   Reprisal: 0
@@ -192,10 +192,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 652d7fd7196fa49408976d4f2432766d, type: 3}
   battleAbilities: []
   activeAbility: {fileID: 0}
-  isDead: 0
   numBouncer: {fileID: 0}
   healthBarUI: {fileID: 0}
-  ammount: 0
 --- !u!114 &8600936793556224423
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -109,6 +109,11 @@ public class AbilityMenu : MonoBehaviour
                 prefab.apCost.text = ability.apCost.ToString();
                 prefab.element.sprite = FindElementImage(ability.element);
                 prefab.ability = ability;
+                prefab.EnableAbility();
+                if(TurnBasedBattleEngine.Instance.activeCharacter.AP< ability.apCost)
+                {
+                    prefab.DisableAbility();
+                }
                 abilityCount++;
                 Activeabilities.Add(prefab);         
             }

@@ -13,6 +13,7 @@ public class CrystalManager : MonoBehaviour
     public Image whiteOut;
     public AudioClip breakopen;
     public AudioClip crack;
+    public AudioClip rumble;
 
     public void BeginCrystalAnim()
     {
@@ -23,6 +24,7 @@ public class CrystalManager : MonoBehaviour
     public IEnumerator BreakCrystal()
     {
         breaking.Play();
+        AudioManager.instance.PlaySFXFromClipLooping(rumble);
         yield return new WaitForSeconds(0.5f);
         crystalNormal.GetComponent<MeshRenderer>().material.DOColor(Color.white, "_EmissionColor", 5f).SetEase(Ease.InCubic).OnComplete(Break);
         yield return new WaitForSeconds(4);

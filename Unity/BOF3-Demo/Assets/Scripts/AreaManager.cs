@@ -6,6 +6,7 @@ public class AreaManager : MonoBehaviour
 {
     public GameObject hideInBattle;
     public static AreaManager instance;
+    public Transform spawnLocation;
 
     private void Awake()
     {

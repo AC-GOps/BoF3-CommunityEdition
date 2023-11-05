@@ -28,7 +28,7 @@ public class BattleUI : MonoBehaviour
 
     public List<EnemyHealthBarUI> EnemyHealthBars = new List<EnemyHealthBarUI>();
     private int EnemyTypeAmount;
-    private int EnemyAmount;
+    private int TotalEnemyAmount;
     public GameObject EnemyHealthBarsParent;
 
     public UIToEnemy uiToEnemy;
@@ -163,7 +163,7 @@ public class BattleUI : MonoBehaviour
     {
         firstSetup = true;
         EnemyTypeAmount = 0;
-        EnemyAmount = 0;
+        TotalEnemyAmount = 0;
         EnemyHealthBarsParent.GetComponentsInChildren<EnemyHealthBarUI>(true, EnemyHealthBars);
 
         _verticalLayoutGroup = EnemyHealthBarsParent.GetComponent<VerticalLayoutGroup>();
@@ -174,38 +174,35 @@ public class BattleUI : MonoBehaviour
 
         foreach (EnemyHealthBarUI healthBarUI in EnemyHealthBars)
         {
-            healthBarUI.healthBarName.text = "";
-            healthBarUI.owner.Clear();
-            healthBarUI.enemyAmount = 0;
-            healthBarUI.gameObject.SetActive(false);
+            healthBarUI.Reset();
         }
 
         foreach (EnemyBattleCharacter enemy in enemies)
         {
-            var v = EnemyHealthBars.Find(i => i.healthBarName.text == enemy.nameCharacter);
+            var exsistingHealthBar = EnemyHealthBars.Find(i => i.healthBarName.text == enemy.nameCharacter);
 
-            if(v != null)
+            if(exsistingHealthBar != null)
             {
-                v.enemyAmount++;
-                enemy.ammount = v.enemyAmount;
-                v.healthBarsRed[v.enemyAmount].gameObject.SetActive(true);
-                v.owner.Add(enemy);
-                enemy.healthBarUI = v;
+                exsistingHealthBar.enemyAmount++;
+                enemy.enemyID = exsistingHealthBar.enemyAmount;
+                exsistingHealthBar.healthBarsParent[enemy.enemyID].gameObject.SetActive(true);
+                exsistingHealthBar.owner.Add(enemy);
+                enemy.healthBarUI = exsistingHealthBar;
             }
             else
             {
-                enemy.ammount = 0;
+                enemy.enemyID = 0;
                 var EHB = EnemyHealthBars[EnemyTypeAmount];
                 EHB.gameObject.SetActive(true);
-                EHB.healthBarsRed[0].gameObject.SetActive(true);
+                EHB.healthBarsParent[0].gameObject.SetActive(true);
                 EHB.owner.Add(enemy);
                 enemy.healthBarUI = EHB;
                 EHB.healthBarName.text = enemy.nameCharacter;
                 EnemyTypeAmount++;
             }
             enemy.UpdateStats(true);
-            enemy.numBouncer = NumberBouncers[EnemyAmount];
-            EnemyAmount++;
+            enemy.numBouncer = NumberBouncers[TotalEnemyAmount];
+            TotalEnemyAmount++;
         }
 
     }
@@ -266,7 +263,7 @@ public class BattleUI : MonoBehaviour
         if (enemyHealth.owner.Count > 1)
         {
             //print("more than 1 owner");
-            currentHiddenHealth = enemyHealth.healthBarsRed[index].gameObject;
+            currentHiddenHealth = enemyHealth.healthBarsParent[index].gameObject;
             currentHiddenHealth.SetActive(false);
             return;
         }
@@ -280,10 +277,10 @@ public class BattleUI : MonoBehaviour
     {
         if (enemyHealth.owner.Count > 1)
         {
-            enemyHealth.healthBarsRed[index].gameObject.SetActive(false);
+            enemyHealth.healthBarsParent[index].gameObject.SetActive(false);
             return;
         }
-        foreach(Image ui in enemyHealth.healthBarsRed)
+        foreach(Image ui in enemyHealth.healthBarsParent)
         {
             ui.gameObject.SetActive(false);
         }
@@ -344,9 +341,9 @@ public class BattleUI : MonoBehaviour
         }
     }
     #endregion
-    private void RemoveOwnerFromList(EnemyBattleCharacter owner, EnemyHealthBarUI v)
+    private void RemoveOwnerFromList(EnemyBattleCharacter _owner, EnemyHealthBarUI v)
     {
-        v.owner.Remove(owner);
+        v.owner.Remove(_owner);
         if (v.owner.Count > 0)
         {
             return;
@@ -442,6 +439,8 @@ public class BattleUI : MonoBehaviour
 
     private IEnumerator GameOver()
     {
+        state = BattleState.NotInBattle;
+        AudioManager.instance.PlayMusic(4);
         playerbattlemenu.SetActive(false);
         playerbattleHUD.SetActive(false);
         foreach (Animator animators in _engine.playerAnimators)

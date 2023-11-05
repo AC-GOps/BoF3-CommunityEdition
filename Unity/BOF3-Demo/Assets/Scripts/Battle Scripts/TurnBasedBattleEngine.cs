@@ -226,6 +226,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         battleTurnCount = -1;
         enemyBattleCharacters.Remove(deadCharacter);
         battleUI.EnemyUIOnDeath(deadCharacter);
+        print("Removed dead enemy " + deadCharacter.nameCharacter);
         if (enemyBattleCharacters.Count == 0)
         {
             battleWon = true;
@@ -309,7 +310,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         activeCharacter = playerBattleCharacters[activeCharacterCount];
         battleCharacters = battleCharacters.OrderByDescending(character => character.Agility).ToList();
         // This is hard coded for the intro anims
-        StartCoroutine(PlayerTurn(2));
+        StartCoroutine(PlayerTurn(battleSpeed));
     }
 
     private void ResetAll()

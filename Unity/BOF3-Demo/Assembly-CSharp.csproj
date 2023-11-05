@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\FadeIN.cs" />
     <Compile Include="Assets\BirdController.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Trigger.cs" />
+    <Compile Include="Assets\GeneCrystal.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_VectorPicker.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\Interactive\WindManagerSSU.cs" />
     <Compile Include="Assets\Scripts\AreaManager.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Assets\Spells Pack\Demo\Scripts\CreateProjectile.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerHealthBarUI.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\UnscaledTimeSSU.cs" />
+    <Compile Include="Assets\GameSingleton.cs" />
     <Compile Include="Assets\Scripts\IsometricCharacterController.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Scripts\ImageSSU.cs" />
     <Compile Include="Assets\Sprite Shaders Ultimate\Demo\Scripts\Demo_Shaders.cs" />

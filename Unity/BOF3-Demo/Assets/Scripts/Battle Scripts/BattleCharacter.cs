@@ -24,7 +24,7 @@ public class BattleCharacter : MonoBehaviour
     protected TurnBasedBattleEngine _engine;
     [HideInInspector]
     public Animator animator;
-    //[HideInInspector]
+    [HideInInspector]
     public List<BattleCharacter> targets;
     [HideInInspector]
     public BattleActionType battleActionType;
@@ -42,17 +42,12 @@ public class BattleCharacter : MonoBehaviour
     public int PsionicStatChance;
     public int Reprisal;
     public List<BattleResitances> Resistances = new List<BattleResitances>(); // Res against -100% - 300% Flame, Frost, Electric, Earth & Wind / Psionic, Status, Death -200% - 200%
-
-
     public List<AudioClip> attackSounds;
     public List<AudioClip> hurtSounds;
 
     public List<Ability> battleAbilities;
     public Ability activeAbility;
-
-    public bool isDead;
     public bool takenAction { get; set; }
-
     public NumberBouncer numBouncer;
 
 
@@ -111,6 +106,7 @@ public class BattleCharacter : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
         _engine = TurnBasedBattleEngine.Instance;
+        Defence = baseDefence;
     }
 
     private void DodgeAttack(out int dam)
@@ -170,11 +166,14 @@ public class BattleCharacter : MonoBehaviour
         }
 
         int actualDamage = damage - Defence;
-        numBouncer.PlayNumberBounceAtTarget(transform, actualDamage);
-
-        if (actualDamage < 0)
+        if(actualDamage < 0)
         {
             actualDamage = 0;
+        }
+        numBouncer.PlayNumberBounceAtTarget(transform, actualDamage);
+
+        if (actualDamage == 0)
+        {
             print(nameCharacter + " took no damage");
             return;
         }
@@ -196,7 +195,6 @@ public class BattleCharacter : MonoBehaviour
 
     public virtual void Die()
     {
-        isDead = true;
         print(nameCharacter + " died");
     }
 
