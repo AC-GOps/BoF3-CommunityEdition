@@ -42,7 +42,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: 4d48413c5a5e1eb4ea01ca3837f0788c, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: 1707d6f5cfd619048b15b73b746cc067, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.11428572
     m_Position: {x: 1, y: 1}
     m_TimeScale: 1
@@ -58,7 +62,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: a059097717b5152448d5779f144b4afa, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: 4e59d4ebdd022c241ba618f6f943d77b, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.34285715
     m_Position: {x: 1, y: -1}
     m_TimeScale: 1
@@ -74,7 +82,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: 4d48413c5a5e1eb4ea01ca3837f0788c, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: 1707d6f5cfd619048b15b73b746cc067, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.5714286
     m_Position: {x: -1, y: 1}
     m_TimeScale: 1
@@ -90,7 +102,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: a059097717b5152448d5779f144b4afa, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: 4e59d4ebdd022c241ba618f6f943d77b, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.8
     m_Position: {x: -1, y: -1}
     m_TimeScale: 1
@@ -146,7 +162,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: ede2d94439e8a3e43b0c83a46043bd6a, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: 32fae4f6e0173814fa36b356a39f7072, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.11428572
     m_Position: {x: 1, y: 1}
     m_TimeScale: -1
@@ -162,7 +182,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: 55eaec412c2b3574184254909346d1d7, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: aa18168dd6c78fa4495a4e4b44389026, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.34285715
     m_Position: {x: 1, y: -1}
     m_TimeScale: -1
@@ -178,7 +202,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: ede2d94439e8a3e43b0c83a46043bd6a, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: 32fae4f6e0173814fa36b356a39f7072, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.5714286
     m_Position: {x: -1, y: 1}
     m_TimeScale: -1
@@ -194,7 +222,11 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
+<<<<<<< Updated upstream
     m_Motion: {fileID: 7400000, guid: 55eaec412c2b3574184254909346d1d7, type: 2}
+=======
+    m_Motion: {fileID: 7400000, guid: aa18168dd6c78fa4495a4e4b44389026, type: 2}
+>>>>>>> Stashed changes
     m_Threshold: 0.8
     m_Position: {x: -1, y: -1}
     m_TimeScale: -1

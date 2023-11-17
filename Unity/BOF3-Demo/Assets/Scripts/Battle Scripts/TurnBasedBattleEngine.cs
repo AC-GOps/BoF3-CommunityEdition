@@ -138,7 +138,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
 
         battleWon = false;
 
-        AudioManager.instance.PlayMusic(2);
+        AudioManager.instance.PlayMusic(3);
 
         playerBattleCharacters = new List<PlayerBattleCharacter>(PlayerCharacterManager.instance.playerBattleCharacters);
         savedPlayerBattleCharacters = new List<PlayerBattleCharacter>(PlayerCharacterManager.instance.playerBattleCharacters);
