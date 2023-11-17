@@ -75,7 +75,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+<<<<<<< Updated upstream
   m_Sprite: {fileID: -237366899, guid: 54b1432b627aad04f9ae8d00175ab873, type: 3}
+=======
+  m_Sprite: {fileID: 1313887796, guid: d423f2d84f10a324485dd6847c7f40d9, type: 3}
+>>>>>>> Stashed changes
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -276,7 +280,7 @@ Transform:
   - {fileID: 811189766719813234}
   - {fileID: 4121024311947854073}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3309902591019095674
 Rigidbody:

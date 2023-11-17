@@ -21,6 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
+<<<<<<< Updated upstream
       value: {fileID: -1472909802, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
     - time: 0.16666667
       value: {fileID: 365778490, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
@@ -28,6 +29,17 @@ AnimationClip:
       value: {fileID: 288577418, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
     - time: 0.41666666
       value: {fileID: 288577418, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
+=======
+      value: {fileID: -1141084770, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - time: 0.083333336
+      value: {fileID: 1764742127, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - time: 0.16666667
+      value: {fileID: 157604386, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - time: 0.25
+      value: {fileID: -837262516, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - time: 0.33333334
+      value: {fileID: -2081421621, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+>>>>>>> Stashed changes
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +62,28 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
+<<<<<<< Updated upstream
     - {fileID: -1472909802, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
     - {fileID: 365778490, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
     - {fileID: 288577418, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
     - {fileID: 288577418, guid: f14b7d1d78c6c5a49b27b21b2de50387, type: 3}
+=======
+    - {fileID: -1141084770, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - {fileID: 1764742127, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - {fileID: 157604386, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - {fileID: -837262516, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+    - {fileID: -2081421621, guid: cc5a68fca3c96a24e970664353be8317, type: 3}
+>>>>>>> Stashed changes
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
+<<<<<<< Updated upstream
     m_StopTime: 0.5
+=======
+    m_StopTime: 0.4166667
+>>>>>>> Stashed changes
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
