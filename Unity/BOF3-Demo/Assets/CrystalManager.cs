@@ -21,7 +21,7 @@ public class CrystalManager : MonoBehaviour
     }
 
 
-    public IEnumerator BreakCrystal()
+    private IEnumerator BreakCrystal()
     {
         breaking.Play();
         AudioManager.instance.PlaySFXFromClipLooping(rumble);
@@ -34,17 +34,17 @@ public class CrystalManager : MonoBehaviour
         whiteOut.DOFade(1, 1.5f).SetEase(Ease.InCubic).OnComplete(CrystalSwap);
     }
 
-    public void WhiteFlash()
+    private void WhiteFlash()
     {
         whiteOut.DOFade(0, 0.3f).OnComplete(CutSceneManager.instance.OnCompleteEvent);
     }
 
-    public void Break()
+    private void Break()
     {
         breakOpen.Play();
     }
 
-    public void CrystalSwap()
+    private void CrystalSwap()
     {
         AudioManager.instance.StopSFX();
         AudioManager.instance.PlaySFXFromClip(breakopen);

@@ -113,7 +113,7 @@ public class Narrator : MonoBehaviour
         StartCoroutine(PrintText());
     }
 
-    public void ClearText()
+    private void ClearText()
     {
         spamBlock = true;
         if (offset < -1)
@@ -180,7 +180,7 @@ public class Narrator : MonoBehaviour
         }
     }
 
-    public void DeActiveate()
+    private void DeActiveate()
     {
         textBox.gameObject.SetActive(false);
         spamBlock = false;
