@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TeleportBasement
   m_EditorClassIdentifier: 
   dialogueText:
-  - '"Teleporting to Basement...'
+  - '"You feel fully refreshed.'
+  - Teleporting to Basement...
   - Have a nice trip!

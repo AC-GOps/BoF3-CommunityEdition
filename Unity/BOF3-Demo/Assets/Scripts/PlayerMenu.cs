@@ -9,7 +9,8 @@ public class PlayerMenu : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject QuitButton;
     public EventSystem eventSystem;
-    public List<PlayerMenuBox> playerBox = new List<PlayerMenuBox>();
+    public List<PlayerMenuBox> playerboxes = new List<PlayerMenuBox>();
+
 
     public void QuitGame()
     {
@@ -22,12 +23,26 @@ public class PlayerMenu : MonoBehaviour
         {
             bool active = !PauseMenu.activeSelf;
             PauseMenu.SetActive(active);
-            UpdatePlayerBoxs();
             PlayerCharacterManager.instance.playerCharacterController.enabled = !active;
             if (PauseMenu.activeSelf)
             {
-                eventSystem.SetSelectedGameObject(QuitButton);
+                //eventSystem.SetSelectedGameObject(QuitButton);
+                UpdatePlayerBoxes();
             }
+        }
+    }
+
+    private void UpdatePlayerBoxes()
+    {
+        var players = PlayerCharacterManager.instance.playerBattleCharacters;
+        foreach(PlayerMenuBox box in playerboxes)
+        {
+            box.gameObject.SetActive(false);
+        }
+        for (int i = 0; i < players.Count; i++)
+        {
+            playerboxes[i].UpdateInfo(players[i]);
+            playerboxes[i].gameObject.SetActive(true);
         }
     }
 
@@ -39,20 +54,6 @@ public class PlayerMenu : MonoBehaviour
         if (PauseMenu.activeSelf)
         {
             eventSystem.SetSelectedGameObject(QuitButton);
-        }
-    }
-
-    public void UpdatePlayerBoxs()
-    {
-        foreach(PlayerMenuBox box in playerBox)
-        {
-            box.gameObject.SetActive(false);
-        }
-        var PCM = PlayerCharacterManager.instance;
-        for (int i = 0; i < PCM.playerBattleCharacters.Count; i++)
-        {
-            playerBox[i].gameObject.SetActive(true);
-            playerBox[i].UpdateInfo(PCM.playerBattleCharacters[i]);
         }
     }
 }

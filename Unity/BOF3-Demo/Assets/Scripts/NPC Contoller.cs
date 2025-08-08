@@ -72,12 +72,11 @@ public class NPCContoller : MonoBehaviour
     private void CheckDistance()
     {
         float distance = Vector3.Distance(transform.position, targets[TargetIndex].position);
-        if (distance<0.1)
+        if (distance<0.2)
         {
             TargetIndex++;
             if(TargetIndex>targets.Count-1)
             {
-                print("Reached end of targets");
                 if(looping)
                 {
                     TargetIndex = 0;

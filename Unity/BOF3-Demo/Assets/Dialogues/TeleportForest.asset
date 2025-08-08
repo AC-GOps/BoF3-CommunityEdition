@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TeleportForest
   m_EditorClassIdentifier: 
   dialogueText:
-  - '"Teleporting to Forest Zone...'
+  - '"You feel fully refreshed.'
+  - Now teleporting to "Forest"
   - Have a nice trip!

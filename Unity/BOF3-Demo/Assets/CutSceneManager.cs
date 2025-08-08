@@ -9,6 +9,7 @@ public class CutSceneManager : MonoBehaviour
     public static CutSceneManager instance;
     public List<UnityEvent> unityEvents;
     public int currentEvent;
+    public int cutsceneMusic;
 
     private void Awake()
     {
@@ -26,6 +27,11 @@ public class CutSceneManager : MonoBehaviour
 
     private void Start()
     {
+        if (GameSingleton.Instance.cutSceneTriggered)
+        {
+            PlayerCharacterManager.instance.playerCharacterController.transform.position = AreaManager.instance.spawnLocation.position;
+            return;
+        }
         StartSequence();
         PlayerInputManager.Instance.SwapActionMaps("");
     }
@@ -49,7 +55,7 @@ public class CutSceneManager : MonoBehaviour
         currentEvent++;
         if(currentEvent>unityEvents.Count-1)
         {
-            print("end of sequence");
+            EndofCutScene();
             return;
         }
         unityEvents[currentEvent].Invoke();
@@ -57,6 +63,12 @@ public class CutSceneManager : MonoBehaviour
 
     public void StartCutSceneMusic()
     {
-        AudioManager.instance.PlayMusic(1);
+        AudioManager.instance.PlayMusic(cutsceneMusic);
+    }
+
+    public void EndofCutScene()
+    {
+        print("end of sequence");
+        GameSingleton.Instance.cutSceneTriggered = true;
     }
 }

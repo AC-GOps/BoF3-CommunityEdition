@@ -111,7 +111,7 @@ Transform:
   - {fileID: 155610893800066897}
   - {fileID: 7958265640274506342}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5006562488412442063
 MonoBehaviour:
@@ -303,4 +303,3 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   currentEvent: 0
-  cutsceneMusic: 0

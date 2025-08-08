@@ -26,7 +26,7 @@ namespace SpriteShadersUltimate
             EditorGUILayout.BeginVertical("Helpbox");
             GUI.color = new Color(1, 1, 1, 0.7f);
             EditorGUILayout.LabelField("Will <b>instantiate</b> materials at runtime.", labelStyle);
-            EditorGUILayout.LabelField("Fixes shaders requiring a <b>unique material instance</b>.", labelStyle);
+            EditorGUILayout.LabelField("Fixes shaders requiring a <b>unique material Instance</b>.", labelStyle);
             GUI.color = Color.white;
             EditorGUILayout.EndVertical();
 

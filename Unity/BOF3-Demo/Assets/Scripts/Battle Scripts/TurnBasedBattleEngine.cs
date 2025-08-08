@@ -115,15 +115,15 @@ public class TurnBasedBattleEngine : MonoBehaviour
         enemyBattleLocations.Clear();
         for(int i = 0; i < BattleLocations.Count; i++)
         {
-            if(i >= 1 && i <4)
+            if(i >= 0 && i <3)
             {
                 playerBattleLocations.Add(BattleLocations[i]);
             }
-            else if(i >= 4 && i < 7)
+            else if(i >= 3 && i < 6)
             {
                 enemyBattleLocations.Add(BattleLocations[i]);
             }
-            if (i == 7)
+            if (i == 6)
             {
                 battleCamLocation = BattleLocations[i];
             }
@@ -226,6 +226,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         battleTurnCount = -1;
         enemyBattleCharacters.Remove(deadCharacter);
         battleUI.EnemyUIOnDeath(deadCharacter);
+        print("Removed dead enemy " + deadCharacter.nameCharacter);
         if (enemyBattleCharacters.Count == 0)
         {
             battleWon = true;
@@ -309,7 +310,7 @@ public class TurnBasedBattleEngine : MonoBehaviour
         activeCharacter = playerBattleCharacters[activeCharacterCount];
         battleCharacters = battleCharacters.OrderByDescending(character => character.Agility).ToList();
         // This is hard coded for the intro anims
-        StartCoroutine(PlayerTurn(2));
+        StartCoroutine(PlayerTurn(battleSpeed));
     }
 
     private void ResetAll()

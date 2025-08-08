@@ -430,17 +430,17 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
-  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: b6ff4a3936a90614cbd339689a2356ec, type: 3}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: 2678835027133080177, guid: b6ff4a3936a90614cbd339689a2356ec, type: 3}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -704,7 +704,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -1066,6 +1066,7 @@ MonoBehaviour:
   sceneChanger: {fileID: 1096489482}
   EnterGame: {fileID: 8300000, guid: 2b4e565d383445a40ac75681e3cece4f, type: 3}
   flashText: {fileID: 1999459028}
+  pressed: 0
 --- !u!4 &1199026959
 Transform:
   m_ObjectHideFlags: 0
@@ -1140,10 +1141,6 @@ MonoBehaviour:
     m_ActionName: Narration/Interact[/XInputControllerWindows/buttonSouth,/Keyboard/anyKey]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 00a12fc2-4b17-4de6-b59d-b53acf15cc66
-    m_ActionName: Battle/Select[/XInputControllerWindows/buttonSouth,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 6be3c2a9-f4a6-4945-a2cc-4a66abbd29c2
     m_ActionName: Battle/Back[/XInputControllerWindows/buttonEast,/Keyboard/escape]
   - m_PersistentCalls:
@@ -1180,8 +1177,12 @@ MonoBehaviour:
     m_ActionName: UI/Select[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 3ab26c6f-4256-4fb8-a623-eb6b8d2fe61e
-    m_ActionName: Gameplay/ONHiteru[/Keyboard/h]
+    m_ActionId: 7a2ddd08-e8ce-4c18-86b6-0bc82dbdff51
+    m_ActionName: Battle/Select[/XInputControllerWindows/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 86af98cb-fa56-4d36-ad5b-0402db50c315
+    m_ActionName: UI/Move[/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Menu
