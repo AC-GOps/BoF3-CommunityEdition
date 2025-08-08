@@ -160,7 +160,7 @@ Transform:
   - {fileID: 3727504272440750512}
   - {fileID: 5853507000780983422}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8238365596806146167
 MonoBehaviour:
@@ -175,10 +175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicClips:
-  - {fileID: 8300000, guid: 7125475004501bc4fa59ebcc30dbfb0a, type: 3}
-  - {fileID: 8300000, guid: 0dc17372fc863ff498c7377a15635b3c, type: 3}
-  - {fileID: 8300000, guid: 5a0c25af28ce0f745bd7a09b869f900a, type: 3}
-  - {fileID: 8300000, guid: 663ac1fc41d0fce43aa81e10512bf371, type: 3}
+  - {fileID: 8300000, guid: 34254b2fe450e954786d96935f94fde9, type: 3}
+  - {fileID: 8300000, guid: 1b267e88297a2a145b092996e36f9269, type: 3}
+  - {fileID: 8300000, guid: 2ce9ab87ed40c0a4b81c20d8e9e07cb5, type: 3}
+  - {fileID: 8300000, guid: 126c396bc2ecd0c44a9c9b58c9c6320c, type: 3}
+  - {fileID: 8300000, guid: 8293bc1814575a045870b81c5336b87d, type: 3}
   effectClips:
   - {fileID: 8300000, guid: cd8ddcdc9a074364487cee8cdc19a612, type: 3}
   - {fileID: 8300000, guid: 6ebb4a0c5e99dc44e96241f2f772fb81, type: 3}
@@ -190,9 +191,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b795aaed2532e604c854dacb31c2643b, type: 3}
   - {fileID: 8300000, guid: 4189e23f118636f4780bee2c8b3d8ed5, type: 3}
   battleClips:
-  - {fileID: 8300000, guid: d1c336d063749624da978f6273ef7dc8, type: 3}
+  - {fileID: 8300000, guid: 141c03b860681054e849429a51888d73, type: 3}
   hurtClips:
-  - {fileID: 8300000, guid: d23a59e12ef8c8b42bb137473ea7a2a8, type: 3}
+  - {fileID: 8300000, guid: da30406395b22de4e8bdcddccac378f7, type: 3}
   backgroundMusic: {fileID: 7234417028181373407}
   soundEffect: {fileID: 8583986244428127407}
   musicVolume: 1

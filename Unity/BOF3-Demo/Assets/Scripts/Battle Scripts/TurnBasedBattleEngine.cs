@@ -115,15 +115,15 @@ public class TurnBasedBattleEngine : MonoBehaviour
         enemyBattleLocations.Clear();
         for(int i = 0; i < BattleLocations.Count; i++)
         {
-            if(i >= 1 && i <4)
+            if(i >= 0 && i <3)
             {
                 playerBattleLocations.Add(BattleLocations[i]);
             }
-            else if(i >= 4 && i < 7)
+            else if(i >= 3 && i < 6)
             {
                 enemyBattleLocations.Add(BattleLocations[i]);
             }
-            if (i == 7)
+            if (i == 6)
             {
                 battleCamLocation = BattleLocations[i];
             }

@@ -9,7 +9,7 @@ public class PlayerMenu : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject QuitButton;
     public EventSystem eventSystem;
-    // Update is called once per frame
+    public List<PlayerMenuBox> playerboxes = new List<PlayerMenuBox>();
 
 
     public void QuitGame()
@@ -26,10 +26,26 @@ public class PlayerMenu : MonoBehaviour
             PlayerCharacterManager.instance.playerCharacterController.enabled = !active;
             if (PauseMenu.activeSelf)
             {
-                eventSystem.SetSelectedGameObject(QuitButton);
+                //eventSystem.SetSelectedGameObject(QuitButton);
+                UpdatePlayerBoxes();
             }
         }
     }
+
+    private void UpdatePlayerBoxes()
+    {
+        var players = PlayerCharacterManager.instance.playerBattleCharacters;
+        foreach(PlayerMenuBox box in playerboxes)
+        {
+            box.gameObject.SetActive(false);
+        }
+        for (int i = 0; i < players.Count; i++)
+        {
+            playerboxes[i].UpdateInfo(players[i]);
+            playerboxes[i].gameObject.SetActive(true);
+        }
+    }
+
     public void ToggleMenu()
     {
         bool active = !PauseMenu.activeSelf;

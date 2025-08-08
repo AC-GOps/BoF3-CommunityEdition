@@ -187,9 +187,9 @@ MonoBehaviour:
   Reprisal: 0
   Resistances: []
   attackSounds:
-  - {fileID: 8300000, guid: ceae0ab8762e3cd47a94298a62514f60, type: 3}
+  - {fileID: 8300000, guid: 5a7b0ff7c3bfd3c4cb173497796141c8, type: 3}
   hurtSounds:
-  - {fileID: 8300000, guid: 4c9b67113b21c6a49bd6119f45045b60, type: 3}
+  - {fileID: 8300000, guid: cfe281fea80e93e45b10b9e1cfb014ff, type: 3}
   battleAbilities: []
   activeAbility: {fileID: 0}
   numBouncer: {fileID: 0}
